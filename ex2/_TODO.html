@@ -1,0 +1,447 @@
+<html><head><title>exercises/2-js-f</title><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Fira+Mono"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.0/build/styles/default.min.css"><style>body,* {font-family: "Fira Sans";scroll-behavior: smooth;}body {margin: 1em;}#usi-logo {width: 75px;height: 75px;}header {display: flex;align-content: space-between;width: 100%;justify-items: center;}header ul {list-style: none;}header .title {flex: 1;margin-left: 1em;}html {min-height: 100vh;}pre,code {font-family: "Fira Mono"}pre {background: rgb(202, 227, 255);padding: 1em;}td {text-align: center}td:last-child {text-align: left;}th {font-weight: normal;color: rgb(0, 61, 131);}thead {border-bottom: 2px solid rgb(202, 227, 255);}table {width: 100%}span.task {display: inline-flex;border-radius: 50%;border: 1px solid white;background: #ffbc00;width: 4em;height: 4em;justify-content: center;align-items: center;font-weight: normal;margin-top: 2em;}.deadline {text-align: right;}p.deadline {font-size: 2em;}.deadline b {border-bottom: 1px solid black;}</style></head><body><header>    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="usi-logo" x="0px" y="0px" width="200" height="200" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve" class="injected-svg svg"><g><path d="M180,41.7h-51.1V31.1h42.2C153.1,12.5,127.8,1,99.9,1C45.2,1.1,0.9,45.4,1,100.1c0,26.8,10.7,51.1,28.1,68.9   c-1.4-2-2.4-4.1-3-6.1c-1-3.5-1-5.9-1.1-15.8v-47.1h14.8v48.5c0,3.4-0.1,6.6,1,9.6c3,7.6,11.3,8.5,16,8.5c2.3,0,8.3-0.1,12.6-3.9   c4.4-3.9,4.4-8.4,4.4-15v-47.7h14.9v49.7c-0.1,8.9-0.1,16.3-8.5,23.5c-8,7-18.4,7.7-23.8,7.7c-4.8,0-9.5-0.6-14-2.1   c-1.8-0.6-3.5-1.4-5-2.3c17.1,14,39,22.4,62.8,22.4c54.7-0.1,99-44.4,98.9-99.1C199,78.1,191.9,58,180,41.7z M175.3,94.4l-6.3-9   c2.1-1.4,8.7-5.7,8.7-17.7c0-2-0.2-4.1-1-6.2c-1.7-4.1-4.6-4.9-6.6-4.9c-3.6,0-4.9,2.5-5.7,4.3c-0.5,1.3-0.6,1.5-1.8,6.6l-1.5,6.9   c-0.9,3.6-1.3,5.4-2,7.2c-1.1,2.6-4.5,9.6-14,9.6c-10.9,0-17.8-9.2-17.8-22.6c0-12.3,6.1-19,11.6-23l6.6,8.8   c-2.8,1.9-8.5,5.7-8.5,14.8c0,5.8,2.6,10.8,7,10.8c4.9,0,5.8-5.3,6.8-10.5l1.3-5.9c1.6-7.7,4.8-18.6,17-18.6   c13.1,0,18.4,12.2,18.4,24.3c0,3.2-0.3,6.7-1.3,10.2C185.1,83.4,182.3,90.1,175.3,94.4z"></path></g></svg><div class="title"><h2>Web Atelier 2022</h2><h1>Exercise  2 - JavaScript</h1></div><div class="deadline"><p>29.9.2022</p><p class="deadline">Deadline: <b>7.10.2022</b></p></div><ul><li>Prof. Cesare Pautasso</li><li>Fabio Di Lauro</li><li>Souhaila Serbout</li><li>Hassan Atwi</li></ul></header><h1 id="goal">Goal</h1>
+<p>The goal of these exercises is to improve your understanding of JavaScript as a functional scripting language for the Web browser.</p>
+<p>We assume you know how to program in some other programming language and would like to learn how to program in JavaScript.</p>
+<p>All the code should be written directly into the template (<code>script.js</code>) provided in the skeleton package. After completing the exercise, make sure all the tests are green and push your changes to your GitHub class repository.</p>
+<h3 id="automated-tests">Automated tests</h3>
+<p>Open the <code>test.html</code> page in a Web browser to run the tests automatically. The source of the test cases is found in <code>js/test.js</code>, you are welcome to read them but should not modify them.</p>
+<p>Note: the tests for Task 4 work only when serving the <code>test.html</code> page from a Web server (e.g., using some VS Code extension to <a href="https://marketplace.visualstudio.com/items?itemName=yuichinukiyama.vscode-preview-server&amp;ssr=false#qna">Preview on Web Server</a>) and not when opening the page as a file. If you read the error <code>Error: SecurityError: Permission denied to access property &quot;document&quot; on cross-origin object</code> it means the <code>test.html</code> was opened as a file.</p>
+<p>The property-based tests will call your functions with lots of random input values. We recommend using the helper functgion <code>logFunctionArguments(arguments)</code> to print to the <code>console.log</code> the function parameter values used by the test so that you can manually reproduce the input of failed tests.</p>
+<h2 id="submitting-your-solution">Submitting your solution</h2>
+<p>Your solution <strong>should</strong> be commited <strong>and pushed</strong> to your github repository. Make sure your name is written in every file you submit. Anonymous solutions will not be graded.</p>
+<p>See the <code>README.md</code> file for more details on how to commit <strong>and push</strong> your solution.</p>
+<p>Use the special commit message <code>&quot;completed ex2, please check&quot;</code> <strong>only once</strong> when you have completed the assignment and would like to submit it to be corrected.</p>
+<h2 id="mastery-check-topics">Mastery Check Topics</h2>
+<p>Solving this exercise will help you demonstrate mastery for the following topics:</p>
+<ul>
+<li><p>3. <strong>JavaScript</strong></p>
+<ul>
+<li>3.1. Functional JavaScript<ul>
+<li>3.1.1. Recursion    </li>
+<li>3.1.3. Closures   </li>
+</ul>
+</li>
+<li>3.2. Data Types  <ul>
+<li>3.2.1. Strings<ul>
+<li>3.2.1.1. split</li>
+</ul>
+</li>
+<li>3.2.2. Arrays<ul>
+<li>3.2.2.1. forEach </li>
+<li>3.2.2.2. map</li>
+<li>3.2.2.3. join</li>
+<li>3.2.2.4. reduce   </li>
+</ul>
+</li>
+<li>3.2.3. undefined   </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>4. <strong>APIs</strong></p>
+<ul>
+<li>4.1. Browser  <ul>
+<li>4.1.2. DOM  <ul>
+<li>4.1.2.1. getElementByID  </li>
+<li>4.1.2.2. innerHTML  </li>
+<li>4.1.2.3. querySelector</li>
+</ul>
+</li>
+<li>4.1.3. Timer  </li>
+<li>4.1.4. Events  <ul>
+<li>4.1.4.1. Mouse</li>
+<li>4.1.4.2. Keyboard Input  </li>
+<li>4.1.4.4. addEventListener</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>6. <strong>Development Tools</strong> </p>
+<ul>
+<li>6.1. Browser  <ul>
+<li>6.1.1. Inspector  </li>
+<li>6.1.2. JavaScript Debugger  </li>
+<li>6.1.3. Console  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="task---functional-javascript"><span class='task'>Task 1.</span>  Functional JavaScript</h2>
+<p>In this task you will implement some functions. Notice that for each function inside the <code>js/script.js</code> template we give you a <a href="http://usejsdoc.org/">JSDoc</a> documentation of its <strong>arguments</strong> and and <strong>return</strong> value (these are known as the <em>signature</em> of the function). There are also test cases available to check your code.</p>
+<p>While you should be able to program from scratch all of the algorithms required to implement the following functions, it is ok to take advantage of the JavaScript built-in functions to speed up your development efforts. Still, no external modules or libraries are allowed.</p>
+<ol>
+<li><p><strong>Time Formatter</strong></p>
+<p> Implement a function <code>format_seconds(s)</code> which returns a string computed by transforming the <code>s</code> number into its string representation with the M:SS.MSS format.</p>
+<p> The input parameter can be any positive or negative number. If it is negative, the result should follow the same -M:SS.MSS format, with <code>-</code> in front of the string.</p>
+<p> <code>SS</code> stands for 0-padded number. If the number of seconds is less than 10, the string should contain one extra <code>0</code> character before it. This is not required for the minute digit.</p>
+<p> <code>MSS</code> represents the milliseconds as three fixed decimal digits.</p>
+<p> If the input parameter is undefined or not a number, return the string <code>?:??.???</code></p>
+<p> Examples:</p>
+<p>   <code>format_seconds(61)</code> should return <code>&quot;1:01.000&quot;</code>.</p>
+<p>   <code>format_seconds(-111.111)</code> should return <code>&quot;-1:51.111&quot;</code>.</p>
+<p>   <code>format_seconds(10.423)</code> should return <code>&quot;0:10.423&quot;</code>.</p>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> format<span class="hljs-constructor">_seconds(<span class="hljs-params">s</span>)</span>
+</code></pre>
+<p> <strong>Returns</strong>: <code>String</code> in M:SS.MSS format.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>s</td>
+<td><code>number</code></td>
+<td>The number of seconds (can be positive or negative, integer or float).</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Scalar Product</strong></p>
+<p> Implement a function <code>scalar_product(a, c)</code> which returns an array computed by multiplying each element of the input array <code>a</code> with the input scalar value <code>c</code>.</p>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> scalar<span class="hljs-constructor">_product(<span class="hljs-params">a</span>, <span class="hljs-params">c</span>)</span>
+</code></pre>
+<p> <strong>Returns</strong>: <code>Array</code>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td><code>Array&lt;Number&gt;</code></td>
+<td>The array of numbers.</td>
+</tr>
+<tr>
+<td>c</td>
+<td><code>number</code></td>
+<td>The scalar multiplier.</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Inner Product</strong></p>
+<p> Implement a function <code>inner_product(a, b)</code> which returns a value computed by summing the products of each pair of elements of its input arrays <code>a</code>, <code>b</code> in the same position.</p>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> inner<span class="hljs-constructor">_product(<span class="hljs-params">a</span>, <span class="hljs-params">b</span>)</span>
+</code></pre>
+<p> <strong>Returns</strong>: <code>number</code>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td><code>Array&lt;Number&gt;</code></td>
+<td>The first array of numbers.</td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>Array&lt;Number&gt;</code></td>
+<td>The second array of numbers.</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<ol>
+<li><p><strong>Find Errors</strong></p>
+<p> Implement a function <code>getErrors(a, b)</code> which returns the position of mismatching characters obtained by comparing the two input strings <code>a</code>, <code>b</code>. The first string <code>a</code> is the one entered by the user, while the second <code>b</code> is the typing game challenge. If <code>a.length &lt; b.length</code> the missing characters that have not yet been entered should not be considered in the comparison.</p>
+<p> The position of the mismatching characters should be encoded within an <code>Array</code> of <code>Boolean</code> values, whose length is equal to the input string <code>a</code>. The <code>result[i]</code> element is <code>true</code> if a mismatching character is detected at position <code>i</code>, <code>false</code> otherwise.</p>
+<p> Examples:</p>
+<p> <code>getErrors(&quot;typing&quot;, &quot;typing&quot;)</code> should return <code>[false, false, false, false, false, false]</code>.</p>
+<p> <code>getErrors(&quot;typing&quot;, &quot;typing game&quot;)</code> should return <code>[false, false, false, false, false, false]</code>.</p>
+<p> <code>getErrors(&quot;Typing&quot;, &quot;typing&quot;)</code> should return <code>[true, false, false, false, false, false]</code>.</p>
+<p> <code>getErrors(&quot;typing game&quot;, &quot;typing&quot;)</code> should return <code>[false, false, false, false, false, false, true, true, true, true, true]</code>.</p>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> get<span class="hljs-constructor">Errors(<span class="hljs-params">a</span>, <span class="hljs-params">b</span>)</span>
+</code></pre>
+<p> <strong>Returns</strong>: <code>[Boolean]</code> Array of boolean encoding the position of the mismatching characters.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td><code>String</code></td>
+<td>The string entered by the user.</td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>String</code></td>
+<td>The challenge string to be matched.</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Count Errors</strong></p>
+<p> Implement a function <code>countErrors(a, b)</code> which returns the number of mismatching characters obtained by comparing the two input strings <code>a</code>, <code>b</code>. The first string <code>a</code> is the one entered by the user, while the second <code>b</code> is the typing game challenge. If <code>a.length &lt; b.length</code> the missing characters that have not yet been entered should not be considered in the comparison.</p>
+<p> This function should be implemented by calling the <code>getErrors(a,b)</code> function and reducing its result from an Array of Boolean values into an Integer value.</p>
+<p> Examples:</p>
+<p> <code>countErrors(&quot;typing&quot;, &quot;typing&quot;)</code> should return <code>0</code>.</p>
+<p> <code>countErrors(&quot;typing&quot;, &quot;typing game&quot;)</code> should return <code>0</code>.</p>
+<p> <code>countErrors(&quot;Typing&quot;, &quot;typing&quot;)</code> should return <code>1</code>.</p>
+<p> <code>countErrors(&quot;typing game&quot;, &quot;typing&quot;)</code> should return <code>5</code>.</p>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> count<span class="hljs-constructor">Errors(<span class="hljs-params">a</span>, <span class="hljs-params">b</span>)</span>
+</code></pre>
+<p> <strong>Returns</strong>: <code>number</code> The number of mismatching characters (case sensitive)</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td><code>String</code></td>
+<td>The string entered by the user.</td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>String</code></td>
+<td>The challenge string to be matched.</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<ol>
+<li><p><strong>Collision Detection: Point - Rectangle</strong></p>
+<p> Implement a function <code>detectCollisionRect(x,y,left,top,width,height)</code> which returns <code>true</code> if and only if the point at coordinates (x,y) is found within or on the edge of the rectangle whose top-left corner is found at coordinates (<code>left</code>, <code>top</code>) and size is measured horizontally by the <code>width</code> and vertically by the <code>height</code>. </p>
+<p> Examples:</p>
+<p> <code>detectCollisionRect(0,0,-1,-1,1,1)</code> should return <code>true</code>.</p>
+<p> <code>detectCollisionRect(-1,1,-1,-1,1,1)</code> should return <code>false</code>.</p>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> detect<span class="hljs-constructor">CollisionRect(<span class="hljs-params">x</span>,<span class="hljs-params">y</span>,<span class="hljs-params">left</span>,<span class="hljs-params">top</span>,<span class="hljs-params">width</span>,<span class="hljs-params">height</span>)</span>
+</code></pre>
+<p> <strong>Returns</strong>: <code>Boolean</code> indicating whether the point is inside or on the edge of the rectangle.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x</td>
+<td><code>Number</code></td>
+<td>horizontal coordinate of the point.</td>
+</tr>
+<tr>
+<td>y</td>
+<td><code>Number</code></td>
+<td>vertical coordinate of the point.</td>
+</tr>
+<tr>
+<td>left</td>
+<td><code>Number</code></td>
+<td>horizontal coordinate of the rectangle top-left corner.</td>
+</tr>
+<tr>
+<td>top</td>
+<td><code>Number</code></td>
+<td>vertical coordinate of the rectangle top-left corner.</td>
+</tr>
+<tr>
+<td>width</td>
+<td><code>Number</code></td>
+<td>horizontal size of the rectangle.</td>
+</tr>
+<tr>
+<td>height</td>
+<td><code>Number</code></td>
+<td>vertical size of the rectangle.</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Collision Detection: Point - Rectangle Array</strong></p>
+<p> Implement a function <code>detectCollisionRectArray(x,y,a)</code> which returns <code>true</code> if and only if the point at coordinates (x,y) is found within or on the edge of any of the rectangles listed in the array <code>a</code>.</p>
+<p> Every element of the array <code>a</code> represents a Rectangle, whose position is described using an Array of four elements: <code>[left,top,width,height]</code>.</p>
+<p> Like in the previous function, the top-left corner of each rectangle is found at coordinates (<code>left</code>, <code>top</code>) and their size is measured horizontally by the <code>width</code> and vertically by the <code>height</code>. </p>
+<p> Examples:</p>
+<p> <code>detectCollisionRectArray(0,0, [ [-1,-1,1,1], [1,1,1,1] ])</code> should return <code>true</code>.</p>
+<p> <code>detectCollisionRectArray(-1,1, [ [-1,-1,1,1], [1,1,1,1] ])</code> should return <code>false</code>.</p>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> detect<span class="hljs-constructor">CollisionRectArray(<span class="hljs-params">x</span>,<span class="hljs-params">y</span>,<span class="hljs-params">a</span>)</span>
+</code></pre>
+<p> <strong>Returns</strong>: <code>Boolean</code> indicating whether the point is inside or on the edge of any of the rectangles.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x</td>
+<td><code>Number</code></td>
+<td>horizontal coordinate of the point.</td>
+</tr>
+<tr>
+<td>y</td>
+<td><code>Number</code></td>
+<td>vertical coordinate of the point.</td>
+</tr>
+<tr>
+<td>a</td>
+<td><code>Array[Integer,Integer,Integer,Integer]</code></td>
+<td>rectangle position encoded as an array of 4 Integers <code>[left,top,width,height]</code>.</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="task---closures"><span class='task'>Task 2.</span>  Closures</h2>
+<ol>
+<li><p><strong>Start the Clock</strong></p>
+<pre><code class="language-js"> <span class="hljs-keyword">function</span> start<span class="hljs-constructor">Clock(<span class="hljs-params">t0</span>)</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>t0</td>
+<td><code>Number</code></td>
+<td>The initial timestamp (for example obtained with <code>performance.now()</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Returns</strong>: <code>Function</code> - A function <code>getElapsedTime(t)</code> which returns the difference between the timestamp <code>t</code> and the original time <code>t0</code> when the <code>startClock(t0)</code> was called.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Iterator</strong></p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">iterator</span><span class="hljs-params">(a)</span></span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td><code>Array</code></td>
+<td>The iterator should be called with an array. The result is <code>undefined</code> otherwise</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Returns</strong>: <code>Function</code> - A function <code>next</code> which, starting from the first element of the array <code>a</code>, returns the next element every time it is called.  The returned function <code>next</code> can have the following parameters:</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Next</strong></p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">next</span><span class="hljs-params">(b)</span></span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>b</td>
+<td><code>undefined</code></td>
+<td>By default, if called with no parameters, the iterator returns the value in the next position, or throws an exception if there are no more values left in the array.</td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>Array</code></td>
+<td>If called with an array, the original array is replaced with the one passed as parameter. The iterator position is reset to the initial element of the new array. The result should be a reference to the function <code>next</code> itself.</td>
+</tr>
+<tr>
+<td>b</td>
+<td><code>integer</code></td>
+<td>If called with an integer, the current position is shifted by <code>b</code> elements. The result in this case is the updated position of the iterator, which corresponds to the element which would be returned by calling <code>next()</code> again with no parameters. You do not have to throw an exception if the new position would be out of range.</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="task---read-and-classify-code-patterns"><span class='task'>Task 3.</span>  Read and Classify Code Patterns</h2>
+<p>Read the code of <code>js/play-typing-game.js</code> and answer the <a href="https://www.icorsi.ch/mod/quiz/view.php?id=845579">quiz on iCorsi</a>.</p>
+<p>This will help you understand the code for the typing game before you complete it in the next task.</p>
+<p>In particular, you should learn how to recognize common JavaScript code patterns, reconstruct the purpose of different code structures and write useful comments, especially about function declarations.</p>
+<h2 id="task---typing-game"><span class='task'>Task 4.</span>  Typing Game</h2>
+<p>Complete the typing game main event handling functions so that you have a fully functioning game when opening the <code>play.html</code> page.</p>
+<p>The game uses the following files:</p>
+<ul>
+<li><code>play-typing-game.html</code></li>
+<li><code>css/play-typing-game.css</code></li>
+<li><code>js/play-typing-game.js</code></li>
+<li><code>js/script.js</code></li>
+</ul>
+<p>You should</p>
+<ol>
+<li>Import JS code into the HTML page</li>
+</ol>
+<p>The HTML and CSS are already consistent. Make sure to import both <code>.js</code> files into the HTML with the appropriate <code>&lt;script&gt;</code> tags.</p>
+<ol start="2">
+<li>Complete the start button click event handling function.</li>
+</ol>
+<pre><code class="language-js">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">button_start_click</span><span class="hljs-params">(<span class="hljs-keyword">event</span>)</span></span>
+</code></pre>
+<p>The function should start the clock (i.e. store the current time read using the <code>performance.now()</code> and start the timer event), select a random challenge, prepare the <code>&lt;input&gt;</code> element so that the user can start typing and reset the score of the game to 0.</p>
+<ol start="3">
+<li>Complete the input event handling function.</li>
+</ol>
+<pre><code class="language-js">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">txt_input</span><span class="hljs-params">(<span class="hljs-keyword">event</span>)</span></span>
+</code></pre>
+<p>The function checks if the game should stop (when enough characters have been entered in the input). It should also count how many errors have been entered and use this information to update the display and the score, as well as to repaint the challenge text so that the erroneous characters are shown.</p>
+<ol start="4">
+<li>Play the game</li>
+</ol>
+<p>Play the game and manually test everything works. We also provide automated tests in the <code>test.html</code> file, make sure they are green.</p>
+<h2 id="task---optional-typing-game-features"><span class='task'>Task 5.</span>  Optional Typing Game Features</h2>
+<p>For bonus points, implement at least <em>two</em> (&starf;&starf;&star;) or <em>four</em> (&starf;&starf;&starf;) (or twice as many when working in pairs) of the following:</p>
+<ol>
+<li><p>Add a <code>Quit</code> button to stop the clock manually.</p>
+</li>
+<li><p>Add a 3-2-1-go countdown before starting the clock and accepting user input</p>
+</li>
+<li><p>When completing one challenge, add a <code>Next</code> button to advance to the next challenge, incrementing the level counter and without resetting the score</p>
+</li>
+<li><p>Penalize the user (reduce the score) when hitting the <code>Backspace</code> key to correct mistakes</p>
+</li>
+<li><p>As the user types, reveal only the next 10 characters of the challenge string</p>
+</li>
+<li><p>Let the user enter their name directly on the game page (Hint: use the <code>contenteditable</code> HTML attribute)</p>
+</li>
+<li><p>Add a maximum delay to type the next character. If the user is late, the score is penalized accordingly.</p>
+</li>
+<li><p>Add another timer to count down to zero and stop the game when there is no more time left. The initial time can be computed based on the length of the challenge string.</p>
+</li>
+</ol>
+<p><span style="font-style: italic; ">You should update the <code>README.md</code> file enumerating the optional features you implemented.</span></p>
+<h2 id="questions">Questions?</h2>
+<p>Please post them on our <a href="https://stackoverflow.com/c/usi-itinf/questions/ask?tags=ex2">private StackOverflow</a> using the <code>ex2</code> tag.</p>
+<footer></footer></body></html>

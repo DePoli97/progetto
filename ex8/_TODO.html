@@ -1,0 +1,84 @@
+<html><head><title>exercises/8-ws</title><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Fira+Mono"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.0/build/styles/default.min.css"><style>body,* {font-family: "Fira Sans";scroll-behavior: smooth;}body {margin: 1em;}#usi-logo {width: 75px;height: 75px;}header {display: flex;align-content: space-between;width: 100%;justify-items: center;}header ul {list-style: none;}header .title {flex: 1;margin-left: 1em;}html {min-height: 100vh;}pre,code {font-family: "Fira Mono"}pre {background: rgb(202, 227, 255);padding: 1em;}td {text-align: center}td:last-child {text-align: left;}th {font-weight: normal;color: rgb(0, 61, 131);}thead {border-bottom: 2px solid rgb(202, 227, 255);}table {width: 100%}table tr:hover {background-color: rgb(151, 195, 236);}span.task {display: inline-flex;border-radius: 50%;border: 1px solid white;background: #ffbc00;width: 4em;height: 4em;justify-content: center;align-items: center;font-weight: normal;margin-top: 2em;}.deadline {text-align: right;}p.deadline {font-size: 2em;}.deadline b {border-bottom: 1px solid black;}span.get {font-weight: bold; color: #43a047;}span.post {font-weight: bold; color: #F3C142;}span.delete {font-weight: bold; color: #FF0000;}span.put {font-weight: bold; color: #4a90e2;}span.patch {font-weight: bold; color: #666666;}</style></head><body><header>    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="usi-logo" x="0px" y="0px" width="200" height="200" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve" class="injected-svg svg"><g><path d="M180,41.7h-51.1V31.1h42.2C153.1,12.5,127.8,1,99.9,1C45.2,1.1,0.9,45.4,1,100.1c0,26.8,10.7,51.1,28.1,68.9   c-1.4-2-2.4-4.1-3-6.1c-1-3.5-1-5.9-1.1-15.8v-47.1h14.8v48.5c0,3.4-0.1,6.6,1,9.6c3,7.6,11.3,8.5,16,8.5c2.3,0,8.3-0.1,12.6-3.9   c4.4-3.9,4.4-8.4,4.4-15v-47.7h14.9v49.7c-0.1,8.9-0.1,16.3-8.5,23.5c-8,7-18.4,7.7-23.8,7.7c-4.8,0-9.5-0.6-14-2.1   c-1.8-0.6-3.5-1.4-5-2.3c17.1,14,39,22.4,62.8,22.4c54.7-0.1,99-44.4,98.9-99.1C199,78.1,191.9,58,180,41.7z M175.3,94.4l-6.3-9   c2.1-1.4,8.7-5.7,8.7-17.7c0-2-0.2-4.1-1-6.2c-1.7-4.1-4.6-4.9-6.6-4.9c-3.6,0-4.9,2.5-5.7,4.3c-0.5,1.3-0.6,1.5-1.8,6.6l-1.5,6.9   c-0.9,3.6-1.3,5.4-2,7.2c-1.1,2.6-4.5,9.6-14,9.6c-10.9,0-17.8-9.2-17.8-22.6c0-12.3,6.1-19,11.6-23l6.6,8.8   c-2.8,1.9-8.5,5.7-8.5,14.8c0,5.8,2.6,10.8,7,10.8c4.9,0,5.8-5.3,6.8-10.5l1.3-5.9c1.6-7.7,4.8-18.6,17-18.6   c13.1,0,18.4,12.2,18.4,24.3c0,3.2-0.3,6.7-1.3,10.2C185.1,83.4,182.3,90.1,175.3,94.4z"></path></g></svg><div class="title"><h2>Web Atelier 2022</h2><h1>Exercise  8 - Real-time Web applications with Socket.io</h1></div><div class="deadline"><p>10.11.2022</p><p class="deadline">Deadline: <b>18.11.2022</b></p></div><ul><li>Prof. Cesare Pautasso</li><li>Fabio Di Lauro</li><li>Souhaila Serbout</li><li>Hassan Atwi</li></ul></header><h1 id="goal">Goal</h1>
+<p>In this exercise you will transform the game application into a real-time application, where the content is dynamically loaded and rendered directly in the browser and there is no need to refresh.</p>
+<p>This will further enhance the user experience for the following features:</p>
+<ul>
+<li>synchronizing the editing of typing challenges</li>
+<li>implementing the multi-player version of one of the games (your choice)</li>
+</ul>
+<p>To do so, we will build upon the JSON API and the single-page application from the previous assignments.  Also this time, you may and should run JavaScript code both in the browser and on the Web server.</p>
+<p>Developer Productivity Hint: <strong>do not start solving this assignment from scratch</strong>, but reuse as much as possible the code from your solution of assignments 1,2,3,4,5,6,7.</p>
+<p>To make testing easier, we recommend solving this assignment in pairs.</p>
+<h2 id="mastery-check-topics">Mastery Check Topics</h2>
+<p>Solving this exercise will demonstrate mastery for the following topics:</p>
+<ul>
+<li>4. APIs  <ul>
+<li>4.1. Browser  <ul>
+<li>4.1.10. Socket.io  </li>
+</ul>
+</li>
+<li>4.2. Server  <ul>
+<li>4.2.7. Socket.io<ul>
+<li>4.2.7.1. on  </li>
+<li>4.2.7.2. emit   </li>
+<li>4.2.7.3. broadcast    </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>5. Networking  <ul>
+<li>5.2. WebSockets  </li>
+</ul>
+</li>
+</ul>
+<h2 id="task---synchronize-editing-challenges"><span class='task'>Task 1.</span>  Synchronize Editing Challenges</h2>
+<p>All state changes to the typing challenges should be reflected on all connected browser without neither:</p>
+<ul>
+<li>having to manually refresh the browser page</li>
+<li>automatically polling the server for updates</li>
+</ul>
+<p>Creating or updating a challenge from one browser should automatically refresh the challenge listed on all browsers.</p>
+<p>Deleting an existing challenge from one browser should automatically remove it from all browsers displaying the challenge list.</p>
+<h2 id="task-----multiplayer-tic-tac-toe-game"><span class='task'>Task 2.</span>  &starf;&star;&star;  Multiplayer tic-tac-toe game</h2>
+<p>A pair of players can play the game against each other and anyone else can watch them play from their browser.</p>
+<p>When players make their move by clicking on a link, all connected browsers should &quot;navigate&quot; to the same game state.</p>
+<p>Do not reload the page when clicking on a link, but replace the current board with the one corresponding to the link URL.</p>
+<p>Only display clickable links on the browser of the corresponding player.</p>
+<h2 id="task----multiplayer-typing-game"><span class='task'>Task 3.</span>  &starf;&starf;&star; Multiplayer typing game</h2>
+<p>Implement the following use case scenarios:</p>
+<h3 id="a-start-game">A) Start game</h3>
+<p>All players should be ready to start playing their multiplayer match at the same time.</p>
+<p>When they are ready, they should click on the start button.</p>
+<p>Display the number of connected players and how many have clicked on the start button so far.</p>
+<p>Start the game only after all players have agreed to start.</p>
+<p>The same randomly chosen typing challenge should be displayed on all browsers.</p>
+<h3 id="b-track-typing-race-progress">B) Track typing race progress</h3>
+<p>As the players make progress during their games, display the typed string (showing whether the characters are correct, incorrect or not yet entered) of each player on all connected browsers.</p>
+<h3 id="c-game-over">C) Game over</h3>
+<p>Wait for the slowest player to finish typing the string.</p>
+<p>Display the score and elapsed time for all players across all browsers, indicating the winner (highest score, lowest time)</p>
+<h2 id="task----multiplayer-snake-game"><span class='task'>Task 4.</span>  &starf;&starf;&starf; Multiplayer snake game</h2>
+<p>Implement the following use case scenarios:</p>
+<h3 id="a-start-game-1">A) Start game</h3>
+<p>Players can join and leave the game at any time.</p>
+<p>Display the number of connected players and keep it up-to-date if additional players join.</p>
+<h3 id="b-synchronize-snakes">B) Synchronize Snakes</h3>
+<p>The position, direction, color of the snakes should be the same across all browsers.</p>
+<p>Display the initials of the player name next to the snake head.</p>
+<p>Synchronize the snake object states only when the user changes its direction or when the snake length grows because it has encountered a food item.</p>
+<p>When a snake encounters another snake, the snake biting the other snake should increase its health. The other should decrease its health. 
+However, if both snake heads overlap, both should die immediately.</p>
+<h3 id="c-synchronize-food">C) Synchronize Food</h3>
+<p>The food objects should be placed at the same positions and be shown with the same size and color across all browsers.</p>
+<p>When a food object is eaten by a snake it should disappear from all browsers and the snake length should grow by the same amount on all browsers.</p>
+<h3 id="d-game-over">D) Game over</h3>
+<p>The game stops on all browsers as soon as the health of any snake reaches 0%. </p>
+<p>Display the scores and the snake colors of all players indicating the winner (highest score) on the game over view.</p>
+<h2 id="grading">Grading</h2>
+<p>&starf;&star;&star; - tasks 1, 2</p>
+<p>&starf;&starf;&star; - tasks 1, 3</p>
+<p>&starf;&starf;&starf; - tasks 1, 4</p>
+<h2 id="questions">Questions?</h2>
+<p>Please post them on our <a href="https://stackoverflow.com/c/usi-itinf/questions/ask?tags=ex8">private StackOverflow</a> using the <code>ex8</code> tag.</p>
+<footer></footer></body></html>

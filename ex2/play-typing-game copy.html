@@ -1,0 +1,49 @@
+<!--
+    Web Atelier 2022
+    Exercise 2, task 4
+    HTML5, CSS and JavaScript
+
+    Author: Deidda Paolo
+
+-->
+
+<html>
+    <head>
+        <link href="./css/style.css" rel="stylesheet">
+        <link href="./css/play-typing-game.css" rel="stylesheet">
+    </head>
+    <body>
+        <main>
+            <header>
+                <p class="player" contenteditable="true">player
+                    <span></span>
+                </p>
+                <p class="score">time left<span></span></p>
+                <p class="health">health<span></span></p>
+            </header>
+
+            <section class="game">
+                <p class="challenge">
+                    <span class="undef"></span>
+                    <span class="ok"></span>
+                    <span class="error"></span>
+                </p>
+                <input type="text" id="txt">
+            </section>
+            <footer>
+                <p class="level">level<span></span></p>
+                <p class="time">time<span></span></p>
+            </footer>
+
+            <section class="actions">
+                <button data-action="start">start</button>
+                <button data-action="save">save</button>
+                <button data-action="quit">quit</button>
+            </section>
+            
+        </main>
+    </body>
+    <script src="./js/script.js"></script>
+    <script src="./js/script (copy).js"></script>
+    <script src="./js/play-typing-game (copy).js"></script>
+</html>

@@ -1,0 +1,338 @@
+<html><head><title>exercises/6-mongodb</title><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Fira+Mono"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.0/build/styles/default.min.css"><style>body,* {font-family: "Fira Sans";scroll-behavior: smooth;}body {margin: 1em;}#usi-logo {width: 75px;height: 75px;}header {display: flex;align-content: space-between;width: 100%;justify-items: center;}header ul {list-style: none;}header .title {flex: 1;margin-left: 1em;}html {min-height: 100vh;}pre,code {font-family: "Fira Mono"}pre {background: rgb(202, 227, 255);padding: 1em;}td {text-align: center}td:last-child {text-align: left;}th {font-weight: normal;color: rgb(0, 61, 131);}thead {border-bottom: 2px solid rgb(202, 227, 255);}table {width: 100%}table tr:hover {background-color: rgb(151, 195, 236);}span.task {display: inline-flex;border-radius: 50%;border: 1px solid white;background: #ffbc00;width: 4em;height: 4em;justify-content: center;align-items: center;font-weight: normal;margin-top: 2em;}.deadline {text-align: right;}p.deadline {font-size: 2em;}.deadline b {border-bottom: 1px solid black;}span.get {font-weight: bold; color: #43a047;}span.post {font-weight: bold; color: #F3C142;}span.delete {font-weight: bold; color: #FF0000;}span.put {font-weight: bold; color: #4a90e2;}span.patch {font-weight: bold; color: #666666;}</style></head><body><header>    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="usi-logo" x="0px" y="0px" width="200" height="200" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve" class="injected-svg svg"><g><path d="M180,41.7h-51.1V31.1h42.2C153.1,12.5,127.8,1,99.9,1C45.2,1.1,0.9,45.4,1,100.1c0,26.8,10.7,51.1,28.1,68.9   c-1.4-2-2.4-4.1-3-6.1c-1-3.5-1-5.9-1.1-15.8v-47.1h14.8v48.5c0,3.4-0.1,6.6,1,9.6c3,7.6,11.3,8.5,16,8.5c2.3,0,8.3-0.1,12.6-3.9   c4.4-3.9,4.4-8.4,4.4-15v-47.7h14.9v49.7c-0.1,8.9-0.1,16.3-8.5,23.5c-8,7-18.4,7.7-23.8,7.7c-4.8,0-9.5-0.6-14-2.1   c-1.8-0.6-3.5-1.4-5-2.3c17.1,14,39,22.4,62.8,22.4c54.7-0.1,99-44.4,98.9-99.1C199,78.1,191.9,58,180,41.7z M175.3,94.4l-6.3-9   c2.1-1.4,8.7-5.7,8.7-17.7c0-2-0.2-4.1-1-6.2c-1.7-4.1-4.6-4.9-6.6-4.9c-3.6,0-4.9,2.5-5.7,4.3c-0.5,1.3-0.6,1.5-1.8,6.6l-1.5,6.9   c-0.9,3.6-1.3,5.4-2,7.2c-1.1,2.6-4.5,9.6-14,9.6c-10.9,0-17.8-9.2-17.8-22.6c0-12.3,6.1-19,11.6-23l6.6,8.8   c-2.8,1.9-8.5,5.7-8.5,14.8c0,5.8,2.6,10.8,7,10.8c4.9,0,5.8-5.3,6.8-10.5l1.3-5.9c1.6-7.7,4.8-18.6,17-18.6   c13.1,0,18.4,12.2,18.4,24.3c0,3.2-0.3,6.7-1.3,10.2C185.1,83.4,182.3,90.1,175.3,94.4z"></path></g></svg><div class="title"><h2>Web Atelier 2022</h2><h1>Exercise  6 - Persistent Web Apps and APIs with MongoDB</h1></div><div class="deadline"><p>27.10.2022</p><p class="deadline">Deadline: <b>4.11.2022</b></p></div><ul><li>Prof. Cesare Pautasso</li><li>Fabio Di Lauro</li><li>Souhaila Serbout</li><li>Hassan Atwi</li></ul></header><h1 id="goal">Goal</h1>
+<p>In this exercise you will make the state of the game server accessible through a Web API and store it persistently using the MongoDB database. </p>
+<p>As opposed to the previous assignment, where the high scores and the typing challenges were stored using JSON files, in this exercise you will replace the file system with the database.</p>
+<p>As opposed to the previous assignment, where the high scores and the typing challenges were represented using HTML and edited using forms, in this exercise you will make the objects stored in the database directly accessible from the Web server using their JSON representation.</p>
+<p>Developer Productivity Hint: <strong>do not start solving this assignment from scratch</strong>, but reuse as much as possible (routers and views) from your solution of assignment 5.</p>
+<h2 id="tests">Tests</h2>
+<p>As you develop your code, please run the automated tests to check your solution. Only submit solutions which pass all the tests.</p>
+<p>To run the tests, make sure your Web server <strong>and the database</strong> is running. Then use this command:</p>
+<pre><code class="language-bash">yarn <span class="hljs-keyword">run</span><span class="bash"> <span class="hljs-built_in">test</span></span>
+</code></pre>
+<p>You can check the results on the command line.</p>
+<p><strong>Getting Started</strong>: To install the dependencies for the tests use:</p>
+<pre><code class="language-bash">yarn <span class="hljs-keyword">install</span>
+</code></pre>
+<p>The tests include both regression tests from the previous assignment and new tests focusing on the API and database tasks.</p>
+<p>Important: </p>
+<ul>
+<li>The Web server should be manually started before running the tests. </li>
+<li>The test assumes that your Web server listens on port 8888. </li>
+<li>The database server should also be running and listening on the default port (27017). </li>
+<li>If some of the test fail with a connection refused error, it may mean that the Web server has crashed while running the tests.</li>
+</ul>
+<h2 id="mastery-check-topics">Mastery Check Topics</h2>
+<p>Solving this exercise will demonstrate mastery for the following topics:</p>
+<ul>
+<li>3. JavaScript  <ul>
+<li>3.6. Promises<ul>
+<li>3.6.1. then</li>
+<li>3.6.2. catch</li>
+<li>3.6.3. all</li>
+</ul>
+</li>
+<li>3.7. async, await</li>
+</ul>
+</li>
+<li>4. APIs <ul>
+<li>4.2. Server  <ul>
+<li>4.2.6. MongoDB Client API <ul>
+<li>4.2.6.1. find`</li>
+<li>4.2.6.2. insert  </li>
+<li>4.2.6.3. update  </li>
+<li>4.2.6.4. replace</li>
+<li>4.2.6.5. delete</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>6. Development Tools  <ul>
+<li>6.3. Database Tools<ul>
+<li>6.3.1. mongod</li>
+<li>6.3.2. Compass</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="task---read-and-classify-code-patterns"><span class='task'>Task 1.</span>  Read and Classify Code Patterns</h2>
+<ul>
+<li>Answer the <a href="https://www.icorsi.ch/mod/quiz/view.php?id=860160">quiz on iCorsi</a>.</li>
+</ul>
+<p>This will help you understand the code for the game server before you start to complete it.</p>
+<h2 id="task---game-server-api"><span class='task'>Task 2.</span>  Game Server API</h2>
+<p>The Application Programming Interface (API) of the game server should publish at least the following routes:</p>
+<pre><code><span class='get'>GET</span> <span class="hljs-regexp">/games/</span>typing/challenges
+<span class='post'>POST</span> <span class="hljs-regexp">/games/</span>typing/challenges
+<span class='get'>GET</span> <span class="hljs-regexp">/games/</span>typing<span class="hljs-regexp">/challenges/</span>:id
+<span class='put'>PUT</span> <span class="hljs-regexp">/games/</span>typing<span class="hljs-regexp">/challenges/</span>:id
+<span class="hljs-keyword"><span class='delete'>DELETE</span></span> <span class="hljs-regexp">/games/</span>typing<span class="hljs-regexp">/challenges/</span>:id
+<span class='get'>GET</span> /high_scores
+<span class='post'>POST</span> /high_scores
+</code></pre>
+<p>All routes should accept and produce content represented in JSON (and where required by the previous assignments also HTML) formats.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Request Parameters</th>
+<th>Status Code</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code><span class='get'>GET</span></code></td>
+<td><code>/games/typing/challenges</code></td>
+<td></td>
+<td>200</td>
+<td>The list of available challenge strings</td>
+</tr>
+<tr>
+<td><code><span class='post'>POST</span></code></td>
+<td><code>/games/typing/challenges</code></td>
+<td>The new challenge string to be added</td>
+<td>201</td>
+<td>The challenge string together with its identifier</td>
+</tr>
+<tr>
+<td><code><span class='get'>GET</span></code></td>
+<td><code>/games/typing/challenges/:id</code></td>
+<td><code>:id</code> existing challenge text identifier</td>
+<td>200</td>
+<td>The challenge metadata</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>404</td>
+<td>Empty response (if the challenge does not exist with the given identifier)</td>
+</tr>
+<tr>
+<td><code><span class='put'>PUT</span></code></td>
+<td><code>/games/typing/challenges/:id</code></td>
+<td><code>:id</code> challenge identifier, the new challenge string</td>
+<td>200</td>
+<td>The updated challenge metadata (if the challenge already exists)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>201</td>
+<td>The newly created challenge string (if the challenge did not already exists)</td>
+</tr>
+<tr>
+<td><code><span class='delete'>DELETE</span></code></td>
+<td><code>/games/typing/challenges/:id</code></td>
+<td><code>:id</code> existing challenge identifier</td>
+<td>204</td>
+<td>Empty response</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>404</td>
+<td>Empty response (if the challenge does not exist with the given identifier)</td>
+</tr>
+<tr>
+<td><code><span class='get'>GET</span></code></td>
+<td><code>/high_scores</code></td>
+<td></td>
+<td>200</td>
+<td>The high score list</td>
+</tr>
+<tr>
+<td><code><span class='post'>POST</span></code></td>
+<td><code>/high_scores</code></td>
+<td>The new high score to be stored</td>
+<td>201</td>
+<td>The newly added high score entry</td>
+</tr>
+</tbody></table>
+<p>The JSON objects representing the typing challenges should have at least the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>_id</code></td>
+<td></td>
+<td></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>String</td>
+<td><code>&quot;&quot;</code></td>
+<td>Challenge string</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String</td>
+<td><code>&quot;&quot;</code></td>
+<td>Author of the challenge string</td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td>Integer</td>
+<td><code>5</code></td>
+<td>Difficulty level (0-10)</td>
+</tr>
+</tbody></table>
+<p>The JSON objects representing the high scores should have at least the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>_id</code></td>
+<td></td>
+<td></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code>player</code></td>
+<td>String</td>
+<td><code>&quot;&quot;</code></td>
+<td>Player name</td>
+</tr>
+<tr>
+<td><code>score</code></td>
+<td>Integer</td>
+<td><code>0</code></td>
+<td>Match final score</td>
+</tr>
+</tbody></table>
+<h2 id="task---replace-json-file-with-database"><span class='task'>Task 3.</span>  Replace JSON file with database</h2>
+<p>Require the predefined database connection module found in</p>
+<pre><code>model/<span class="hljs-keyword">index</span>.js
+</code></pre>
+<p>This will export two objects which give access to the <code>high_scores</code> and <code>typing_challenges</code> database collections.</p>
+<p>The database objects representing the typing challenges should have at least the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>_id</code></td>
+<td></td>
+<td></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>String</td>
+<td><code>&quot;&quot;</code></td>
+<td>Challenge string</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String</td>
+<td><code>&quot;&quot;</code></td>
+<td>Author of the challenge string</td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td>Integer</td>
+<td><code>5</code></td>
+<td>Difficulty level (0-10)</td>
+</tr>
+</tbody></table>
+<p>The database objects representing the high scores should have at least the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>_id</code></td>
+<td></td>
+<td></td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code>player</code></td>
+<td>String</td>
+<td><code>&quot;&quot;</code></td>
+<td>Player name</td>
+</tr>
+<tr>
+<td><code>score</code></td>
+<td>Integer</td>
+<td><code>0</code></td>
+<td>Score achieved during the match</td>
+</tr>
+</tbody></table>
+<p>Rewrite all Web server routes to store and retrieve objects from the database.</p>
+<h2 id="task---switch-database-server"><span class='task'>Task 4.</span>  Switch database server</h2>
+<p>While you can develop and test your Web application using the local database server, we have set up a database server in the Cloud which can store the &quot;production&quot; data.</p>
+<p>Replace the connection string with the following</p>
+<pre><code><span class="hljs-attribute">mongodb</span>+srv://db_user:mF<span class="hljs-number">14</span>Cac<span class="hljs-number">1</span>Jfvg<span class="hljs-number">2</span>wZz@cluster<span class="hljs-number">0</span>.x<span class="hljs-number">6</span>zd<span class="hljs-number">3</span>.mongodb.net/Feedback?retryWrites=true&amp;w=majority
+</code></pre>
+<p>Check that your application still works and that you can access data shared from other students.</p>
+<h2 id="task---optional-requirements"><span class='task'>Task 5.</span>  Optional Requirements</h2>
+<p>Once you solved the assignments and the tests are green, make a copy and extend it to build the following optional requirements. Submit the original copy which passes the tests along with the extension.</p>
+<p>For bonus points (&starf;&starf;&star;), implement at least <em>two</em> (or <em>four</em> when working in pairs) of the following:</p>
+<ol>
+<li>Fetch the set of games from which to choose the random game from the database</li>
+<li>Augment the challenge object retrieved from the API with additional fields that should not be stored in the database, such as the number of <code>words</code> in the text and <code>unique_chars</code>: the number of distinct characters to be typed.</li>
+<li>Add routes to remove the entire content of the typing challenge collection <code><span class='delete'>DELETE</span> /games/typing/challenges/ALL</code> and the high scores <code><span class='delete'>DELETE</span> /high_scores</code>.</li>
+<li>Create a new page to import multiple challenge texts (each on a different line of a multi-line text input). Publish it under <code><span class='get'>GET</span> /games/typing/challenges/import</code> and submit the form with a <span class='post'>POST</span> request to the same URL. The <span class='post'>POST</span> request handler should use a single database insert operation to add the corresponding challenge objects.</li>
+</ol>
+<p>For additional bonus points (&starf;&starf;&starf;), in addition to the two above chosen optional requirements, implement also <em>two</em> (or <em>four</em> when working in pairs) of the following: </p>
+<ol>
+<li><p>Using the database, store, update and display a counter for how many time each challenge was played in the typing game</p>
+</li>
+<li><p>Using a single database query, filter the challenge strings by level or by author with the following API:</p>
+<pre><code><span class="hljs-builtin-name"><span class='get'>GET</span></span> /games/typing/challenges?<span class="hljs-attribute">author</span>=N
+<span class="hljs-builtin-name"><span class='get'>GET</span></span> /games/typing/challenges?<span class="hljs-attribute">level</span>=1
+<span class="hljs-builtin-name"><span class='get'>GET</span></span> /games/typing/challenges?<span class="hljs-attribute">level</span>=1-5
+<span class="hljs-builtin-name"><span class='get'>GET</span></span> /games/typing/challenges?<span class="hljs-attribute">level</span>=1,3
+<span class="hljs-builtin-name"><span class='get'>GET</span></span> /games/typing/challenges?<span class="hljs-attribute">level</span>=1,3-6
+<span class="hljs-builtin-name"><span class='get'>GET</span></span> /games/typing/challenges?<span class="hljs-attribute">author</span>=N&amp;level=1,3-6
+</code></pre>
+<p> where the query parameter <code>level</code> can indicate both the exact level number, a set of values or a range, or a set of ranges</p>
+</li>
+<li><p>Provide a JSON representation of the <code><span class='get'>GET</span> /high_scores</code> route, from which an array of high scores can be retrieved. </p>
+<pre><code><span class="hljs-builtin-name"><span class='get'>GET</span></span> /high_scores?sort
+<span class="hljs-builtin-name"><span class='get'>GET</span></span> /high_scores?<span class="hljs-attribute">top</span>=k
+<span class="hljs-builtin-name"><span class='get'>GET</span></span> /high_scores?sort&amp;top
+</code></pre>
+<p> Using the <code>sort</code> parameter it should be possible to select whether the content of the array is ordered by score or by player name, in ascending or descending order.
+ The <code>top</code> query parameter slices the resulting array to include only the top <code>k</code> entries.</p>
+<p> Make sure to use the database to perform such sorting and limiting steps. </p>
+</li>
+<li><p>Extend both the <code><span class='get'>GET</span> /high_scores</code> and <code><span class='get'>GET</span> /games/typing/challenges</code> API routes to use <a href="https://www.microservice-api-patterns.org/patterns/structure/compositeRepresentations/Pagination.html">pagination</a>. </p>
+<pre><code><span class="hljs-builtin-name"><span class='get'>GET</span></span> /games/typing/challenges?page
+<span class="hljs-builtin-name"><span class='get'>GET</span></span> /high_scores?page
+</code></pre>
+<p> The <code>page</code> parameter indicates which page should be retrieved. Each page should contain no more than 10 elements.</p>
+<p> If more results are available beyond the current page, include a special response header <code>X-Next-page: URL</code> to point to the next page.</p>
+</li>
+</ol>
+<h2 id="questions">Questions?</h2>
+<p>Please post them on our <a href="https://stackoverflow.com/c/usi-itinf/questions/ask?tags=ex6">private StackOverflow</a> using the <code>ex6</code> tag.</p>
+<footer></footer></body></html>

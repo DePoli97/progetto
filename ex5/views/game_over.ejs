@@ -1,0 +1,64 @@
+<!--
+
+   Web Atelier 2022  Exercise 5 - Web Apps and APIs with Express
+
+   Student: __Deidda Paolo__
+
+   Game Over Page
+
+-->
+
+<html>
+
+   <head>
+      <style>
+         body {
+            color: white;
+            background-color: black;
+            text-align: left;
+         }
+         p{
+            font-size: 3em;
+         }
+         form {
+            display: inline;
+         }
+         input {
+            font-size: 2em;
+         }
+      </style>
+   </head>
+
+   <body>
+
+      <p class="player">
+         <span>player name: <%= player %></span>
+      </p>
+
+      <p class="score">
+         <span>score: <%= score %></span>
+      </p>
+
+      <p class="time">
+         <span>game time: <%= time %></span>
+      </p>
+
+      <p> Would you like to save your score in the score board?</p>
+
+      <form method="POST" action="/high_scores">
+         <input name="player" value=<%= player %>>
+         <input name="score" type="hidden" value=<%= score %> >
+         <input type="submit" value="YES">
+         <input name="time" type="hidden" value=<%= time %> >
+
+      </form>
+
+      <form method="GET" action="/">
+
+         <input type="submit" value="NO">
+
+      </form>
+
+   </body>
+
+</html>

@@ -1,0 +1,75 @@
+<!--
+
+   Web Atelier 2022  Exercise 5 - Web Apps and APIs with Express
+
+   Student: __STUDENT NAME__
+
+   Edit Challenge Form
+
+-->
+<!--
+
+   Web Atelier 2022  Exercise 5 - Web Apps and APIs with Express
+
+   Student: __STUDENT NAME__
+
+   Edit Challenge Form
+
+-->
+
+<html>
+
+   <head>
+      <style>
+         body{
+            color: white; 
+            background-color: black;
+            text-align: center;
+         }
+         form.postform {
+            display: grid;
+         }
+
+         form.postform span {
+            display: block;
+            margin: 2em;
+         }
+
+         form.postform input, form.postform p {
+            display: inline;
+         }
+
+         form p {
+            text-align: justify;
+         }
+      </style>
+   </head>
+
+   <body>
+
+      <h1> Edit Challenge <%= id %></h1>
+
+      <% let d = challenge
+         let newlink = '/games/typing/challenges/' + id;
+         let challenge_text = d.text
+
+         %>
+      <form method="POST" class="postform" action=<%= newlink %> >
+         <span>
+            <p>Write here the text of the challenge:</p>
+            <input name="text" required size="40" value="<%= challenge_text %>"" >
+         </span>
+         <span>
+            <p>Write here the author of the challenge:</p>
+            <input name="author" required value=<%= d.author %>>
+         </span>
+         <span>
+            <p>Choose here the difficulty of the challenge:</p>
+            <input name="level" required type="range" min="0" max="10" value=<%= d.level %>>
+         </span>
+         <input type="submit" value="SAVE CHANGES">
+      </form>
+   </body>
+   <script src = "/games/typing/challenges.js"></script>
+
+</html>

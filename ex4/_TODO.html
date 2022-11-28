@@ -1,0 +1,181 @@
+<html><head><title>exercises/4-node</title><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Fira+Mono"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.0/build/styles/default.min.css"><style>body,* {font-family: "Fira Sans";scroll-behavior: smooth;}body {margin: 1em;}#usi-logo {width: 75px;height: 75px;}header {display: flex;align-content: space-between;width: 100%;justify-items: center;}header ul {list-style: none;}header .title {flex: 1;margin-left: 1em;}html {min-height: 100vh;}pre,code {font-family: "Fira Mono"}pre {background: rgb(202, 227, 255);padding: 1em;}td {text-align: center}td:last-child {text-align: left;}th {font-weight: normal;color: rgb(0, 61, 131);}thead {border-bottom: 2px solid rgb(202, 227, 255);}table {width: 100%}span.task {display: inline-flex;border-radius: 50%;border: 1px solid white;background: #ffbc00;width: 4em;height: 4em;justify-content: center;align-items: center;font-weight: normal;margin-top: 2em;}.deadline {text-align: right;}p.deadline {font-size: 2em;}.deadline b {border-bottom: 1px solid black;}</style></head><body><header>    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="usi-logo" x="0px" y="0px" width="200" height="200" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve" class="injected-svg svg"><g><path d="M180,41.7h-51.1V31.1h42.2C153.1,12.5,127.8,1,99.9,1C45.2,1.1,0.9,45.4,1,100.1c0,26.8,10.7,51.1,28.1,68.9   c-1.4-2-2.4-4.1-3-6.1c-1-3.5-1-5.9-1.1-15.8v-47.1h14.8v48.5c0,3.4-0.1,6.6,1,9.6c3,7.6,11.3,8.5,16,8.5c2.3,0,8.3-0.1,12.6-3.9   c4.4-3.9,4.4-8.4,4.4-15v-47.7h14.9v49.7c-0.1,8.9-0.1,16.3-8.5,23.5c-8,7-18.4,7.7-23.8,7.7c-4.8,0-9.5-0.6-14-2.1   c-1.8-0.6-3.5-1.4-5-2.3c17.1,14,39,22.4,62.8,22.4c54.7-0.1,99-44.4,98.9-99.1C199,78.1,191.9,58,180,41.7z M175.3,94.4l-6.3-9   c2.1-1.4,8.7-5.7,8.7-17.7c0-2-0.2-4.1-1-6.2c-1.7-4.1-4.6-4.9-6.6-4.9c-3.6,0-4.9,2.5-5.7,4.3c-0.5,1.3-0.6,1.5-1.8,6.6l-1.5,6.9   c-0.9,3.6-1.3,5.4-2,7.2c-1.1,2.6-4.5,9.6-14,9.6c-10.9,0-17.8-9.2-17.8-22.6c0-12.3,6.1-19,11.6-23l6.6,8.8   c-2.8,1.9-8.5,5.7-8.5,14.8c0,5.8,2.6,10.8,7,10.8c4.9,0,5.8-5.3,6.8-10.5l1.3-5.9c1.6-7.7,4.8-18.6,17-18.6   c13.1,0,18.4,12.2,18.4,24.3c0,3.2-0.3,6.7-1.3,10.2C185.1,83.4,182.3,90.1,175.3,94.4z"></path></g></svg><div class="title"><h2>Web Atelier 2022</h2><h1>Exercise  4 - JavaScript on the Server-side</h1></div><div class="deadline"><p>13.10.2022</p><p class="deadline">Deadline: <b>21.10.2022</b></p></div><ul><li>Prof. Cesare Pautasso</li><li>Fabio Di Lauro</li><li>Souhaila Serbout</li><li>Hassan Atwi</li></ul></header><h1 id="goal">Goal</h1>
+<p>The goal of these exercises is to improve your understanding of JavaScript as a server-side programming language.</p>
+<p>We will run JavaScript exclusively on the server-side. No JavaScript running in the browser is necessary nor allowed to solve the assignment.</p>
+<p>You will learn how to use node.js to build a simple Web server hosting the classic tic-tac-toe game. The state of the game is encoded using URL addresses and each move is played using a request-response round of the HTTP protocol.</p>
+<p><video src="https://i.imgur.com/p7KwhAc.mp4" width="100%" controls></video></p>
+<p>Hint: in the video, watch carefully the browser address bar to discover how it encodes the state of the game (including the score).</p>
+<p>More information on the game can be found on <a href="https://en.wikipedia.org/wiki/Tic-tac-toe">Wikipedia</a>.</p>
+<h1 id="tests">Tests</h1>
+<p>As you develop your code, please run the automated tests to check your solution. Only submit solutions which pass all the tests.</p>
+<p><strong>Getting Started</strong>: To install the dependencies for the tests use:</p>
+<pre><code class="language-bash">yarn <span class="hljs-keyword">install</span>
+</code></pre>
+<p><strong>Important</strong>: Make sure your Web server is already started before running the test. 
+The test assumes that your Web server listens on port 8888. </p>
+<p>If you see test failures due to <code>Error: ECONNREFUSED: Connection refused</code> it means that your Web server was not running at the time the test attempted to connect to it. </p>
+<p><strong>Running the tests</strong>: To run the tests use this command:</p>
+<pre><code class="language-bash">yarn <span class="hljs-keyword">run</span><span class="bash"> <span class="hljs-built_in">test</span></span>
+</code></pre>
+<p>You can check the results on the terminal.</p>
+<h2 id="mastery-check-topics">Mastery Check Topics</h2>
+<p>Solving this exercise will demonstrate mastery for the following topics:</p>
+<ul>
+<li>3. JavaScript  <ul>
+<li>3.4. Modules  </li>
+<li>3.5. Callbacks  </li>
+</ul>
+</li>
+<li>4. APIs  <ul>
+<li>4.2. Server  <ul>
+<li>4.2.1. HTTP Server  </li>
+<li>4.2.2. File System</li>
+<li>4.2.5. Simple Routing  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>5. Networking  <ul>
+<li>5.1. HTTP  <ul>
+<li>5.1.1. Request/Response  </li>
+<li>5.1.2. URL  </li>
+<li>5.1.4. Methods  <ul>
+<li>5.1.4.1. <span class='get'>GET</span>  </li>
+</ul>
+</li>
+<li>5.1.5. Status Codes  <ul>
+<li>5.1.5.1. Redirect  </li>
+<li>5.1.5.2. Method not Allowed  </li>
+<li>5.1.5.3. Not found</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>6. Development Tools  <ul>
+<li>6.1. Browser  <ul>
+<li>6.1.1. Inspector: Network tab</li>
+<li>6.1.2. JavaScript Debugger  </li>
+<li>6.1.3. Console  </li>
+</ul>
+</li>
+<li>6.2. Server and Command Line Tools<ul>
+<li>6.2.1. Console  </li>
+<li>6.2.2. Yarn  </li>
+<li>6.2.3. Dependency Management with package.json</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="task---read-and-classify-code-patterns"><span class='task'>Task 1.</span>  Read and Classify Code Patterns</h2>
+<ul>
+<li>Answer the <a href="https://www.icorsi.ch/mod/quiz/view.php?id=854640">quiz on iCorsi</a>.</li>
+</ul>
+<p>This will help you understand the code for the game before you start to complete it.</p>
+<h2 id="task---complete-the-tic-tac-toe-game-module"><span class='task'>Task 2.</span>  Complete the Tic Tac Toe Game Module</h2>
+<p>The <code>play-tictactoe-game.js</code> module contains some functions which define the basic game rules:</p>
+<ul>
+<li><code>win(s)</code> whether one of the players won the game</li>
+<li><code>over(s)</code> whether more moves are possible or the board is full</li>
+</ul>
+<p>For all, the string parameter encodes the board state as follows.</p>
+<p>The tic-tac-toe game has a very small state space, given its 3x3 board whose elements can have only 3 values: &quot;_&quot; (empty), &quot;X&quot; or &quot;O&quot;. We can therefore encode it as a string composed of 9 characters, which represent the board row after row.</p>
+<p>For example, the string <code>_________</code> (9x the underscore character: <code>&quot;_&quot;.repeat(9)</code>) represents the initial state of the board, where no player has made a move yet.</p>
+<img src="https://i.imgur.com/JBT7gJU.png" width="256px">
+
+<p>The string <code>____O____</code> represent the first move in the central position by player <code>&quot;O&quot;</code>.</p>
+<img src="https://i.imgur.com/0RTNUuA.png" width="256px">
+
+<p>The string <code>XXXOO____</code> represent the board won by player <code>&quot;X&quot;</code>, as it contains the first row full of three consecutive &quot;X&quot; elements.</p>
+<img src="https://i.imgur.com/GRQIS8f.png" width="256px">
+
+
+<p>Extend this module with additional functions that help to implement the rest of the tasks.</p>
+<h2 id="task---display-the-board-as-an-html-page"><span class='task'>Task 3.</span>  Display the board as an HTML page</h2>
+<p>Extend the Web server skeleton in <code>index.js</code> so that when receiving an HTTP request to the following URL <code>/tic-tac-toe/{s}</code> it will reply with a response that contains an HTML page which displays the corresponding board elements as encoded by the string <code>{s}</code>. </p>
+<p>The HTML page may use the given CSS file to display the elements appropriately. You can improve the CSS, although the test expects each board element text (the strings <code>&quot;_&quot;</code>, <code>&quot;X&quot;</code> or <code>&quot;O&quot;</code>) to be found inside the <code>&lt;b&gt;&lt;/b&gt;</code> tags.</p>
+<p>To serve the CSS styles and any other static asset needed by the browser to display your game, extend the Web server so that the files found in the <code>public</code> folder can be downloaded.</p>
+<p>For example, the file:</p>
+<pre><code><span class="hljs-keyword">public</span>/play-tictactoe-game.css
+</code></pre>
+<p>should be published under the URL:</p>
+<pre><code>http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8888</span>/play-tictactoe-game.css
+</code></pre>
+<p>Hint: use the <code>download(urlpath, response)</code> request handler function.</p>
+<h2 id="task---add-links-to-play-next-move"><span class='task'>Task 4.</span>  Add links to play next move</h2>
+<p>To let players make their move, add links on the empty board elements. Following those links will fetch a new page, displaying the <code>&quot;X&quot;</code> or <code>&quot;O&quot;</code> in the empty element position. </p>
+<p>To do so we need to know which player makes the next move, so the URL encoding should be extended as follows:</p>
+<pre><code><span class="hljs-regexp">/tic-tac-toe/</span>{s}/{player} 
+</code></pre>
+<p>This will render an HTML page which displays the corresponding board elements and include links which enable the <code>{player}</code> (&quot;x&quot; or &quot;o&quot;) to make the next move. </p>
+<p>By default, if no <code>{player}</code> is specified, the &quot;o&quot; player makes the first move.</p>
+<p>For example, this empty board:</p>
+<pre><code><span class="hljs-regexp">/tic-tac-toe/</span>_________/o
+</code></pre>
+<p>should contain links targeting the following URLs:</p>
+<pre><code><span class="hljs-regexp">/tic-tac-toe/</span>O________/x
+<span class="hljs-regexp">/tic-tac-toe/</span>_O_______/x
+<span class="hljs-regexp">/tic-tac-toe/</span>__O______/x
+<span class="hljs-regexp">/tic-tac-toe/</span>___O_____/x
+<span class="hljs-regexp">/tic-tac-toe/</span>____O____/x
+<span class="hljs-regexp">/tic-tac-toe/</span>_____O___/x
+<span class="hljs-regexp">/tic-tac-toe/</span>______O__/x
+<span class="hljs-regexp">/tic-tac-toe/</span>_______O_/x
+<span class="hljs-regexp">/tic-tac-toe/</span>________O/x
+</code></pre>
+<p>Each link should be attached to the corresponding empty board element.</p>
+<p>Since &quot;{s}/o&quot; made the first move, the links should point to the other player &quot;{s}/x&quot;.</p>
+<p>The empty board URL with the other player:</p>
+<pre><code><span class="hljs-regexp">/tic-tac-toe/</span>_________/x
+</code></pre>
+<p>should allow player &quot;X&quot; to start the game. To do so, it should include the following links:</p>
+<pre><code><span class="hljs-regexp">/tic-tac-toe/</span>X________/o
+<span class="hljs-regexp">/tic-tac-toe/</span>_X_______/o
+<span class="hljs-regexp">/tic-tac-toe/</span>__X______/o
+<span class="hljs-regexp">/tic-tac-toe/</span>___X_____/o
+<span class="hljs-regexp">/tic-tac-toe/</span>____X____/o
+<span class="hljs-regexp">/tic-tac-toe/</span>_____X___/o
+<span class="hljs-regexp">/tic-tac-toe/</span>______X__/o
+<span class="hljs-regexp">/tic-tac-toe/</span>_______X_/o
+<span class="hljs-regexp">/tic-tac-toe/</span>________X/o
+</code></pre>
+<p>Again, since &quot;{s}/x&quot; made the first move, the links should point to the other player &quot;{s}/o&quot;.</p>
+<h2 id="task---check-game-over-outcome-wintie"><span class='task'>Task 5.</span>  Check game over outcome: win/tie</h2>
+<p>When displaying the board, check if some player managed to place three elements on the same row/column or diagonal line, or no more moves are possible and the game ends in a tie.</p>
+<p>In this case, display a <code>&quot;X wins&quot;</code>, <code>&quot;O wins&quot;</code> or <code>&quot;tie&quot;</code> message inside some page element which can be selected using its <code>class=&quot;message&quot;</code> attribute.</p>
+<p>The <code>&lt;body class=&quot;&quot;&gt;</code> attribute should be changed accordingly:</p>
+<ul>
+<li><code>&lt;body class=&quot;win&quot;&gt;</code> some player won</li>
+<li><code>&lt;body class=&quot;tie&quot;&gt;</code> no player won, no more moves possible</li>
+</ul>
+<p>so that the corresponding CSS rules can be activated to change the appearance of the Web page in case of victory.</p>
+<h2 id="task---track-score"><span class='task'>Task 6.</span>  Track Score</h2>
+<p>After a game ends, the corresponding score should be updated to indicate how many games ended as a tie, how many were won by each player.</p>
+<p>The score should be encoded as part of the game URL using query parameters (<code>scoreX={number}&amp;scoreO={number}&amp;ties={number}</code>) so that they can be carried over from the previous game into the next one.</p>
+<p>The current score values encoded in the corresponding URL query string parameters should be displayed as part of the game page.</p>
+<h2 id="task---start-the-game"><span class='task'>Task 7.</span>  Start the Game</h2>
+<p>Redirect HTTP <span class='get'>GET</span> requests to the URL <code>&quot;/&quot;</code> to the <code>Location</code> of the empty board, with initial score values of 0:</p>
+<pre><code><span class="hljs-meta-keyword">/tic-tac-toe/</span>_________?scoreX=<span class="hljs-number">0</span><span class="hljs-variable">&amp;</span>scoreO=<span class="hljs-number">0</span><span class="hljs-variable">&amp;ties</span>=<span class="hljs-number">0</span>
+</code></pre>
+<h2 id="task---optional-requirements"><span class='task'>Task 8.</span>  Optional Requirements</h2>
+<p>For bonus points (&starf;&starf;&star;), implement at least <em>two</em> (or <em>four</em> when working in pairs) of the following:</p>
+<ol>
+<li>Check that the string representation of the game state included in the URL starting with <code>/tic-tac-toe/</code> is valid. Invalid URL strings should be rejected by sending a response with the <code>400</code> status code.</li>
+<li>Add a <code>Reset</code> link to go back to the initial state where no games have been played yet, the board is empty, and all scores are reset to 0.</li>
+<li>Replace the &quot;X&quot; or &quot;O&quot; characters with images served from your Web server to the browser using HTTP.</li>
+<li>Highlight the winning triplet on the board (extend both HTML and CSS appropriately)</li>
+<li>Make sure that when player &quot;X&quot; wins, the first move of the next game is played by &quot;O&quot; (and viceversa)</li>
+</ol>
+<p>For additional bonus points (&starf;&starf;&starf;), in addition to the two above chosen optional requirements, implement also <em>two</em> (or <em>four</em> when working in pairs) of the following: </p>
+<ol>
+<li>Add a parameter to the URL storing a digital signature of the URL string so that the server can catch players tampering with the URL</li>
+<li>Give the option to play against the computer (encode whether it&#39;s a manual or automatic game as part of the URL). When playing against the computer, make it randomly choose which link to follow: when the human player makes a move by following a link, the response will redirect the browser to a page representing the game state reached after the random AI player has already made the next move</li>
+<li>Instead of making a random choice, pick the link which leads the automated player to winning the game (if possible)</li>
+<li>Extend the game to use a 4x4 grid (4 aligned elements are needed to win)</li>
+<li>Using links, let players choose the column in which to enter their move, which should then occupy the first free position from the bottom</li>
+<li>Generate HTML files representing all possible valid game states and include links allowing players to transition between them and serve the game (without keeping track of the score) from a static Web server.</li>
+</ol>
+<h2 id="questions">Questions?</h2>
+<p>Please post them on our <a href="https://stackoverflow.com/c/usi-itinf/questions/ask?tags=ex3">private StackOverflow</a> using the <code>ex3</code> tag.</p>
+<footer></footer></body></html>

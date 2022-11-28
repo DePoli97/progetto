@@ -1,0 +1,34 @@
+<!--
+
+   Web Atelier 2022  Exercise 5 - Web Apps and APIs with Express
+
+   Student: __Deidda Paolo__
+
+   Home Page
+
+-->
+
+<body>
+   <head>
+      <style>
+         body{
+            color: white;
+            background-color: black;
+         }
+      </style>
+   </head>
+   <form method="post" class = "postform" action="/games/typing/challenges"  >
+      <input type="text" name = "text" placeholder="text">
+      <input type="text" name = "author" placeholder="author">
+      <input type="number" name = "level" placeholder="level">
+      <input type="submit" value= "send">
+   </form>
+
+   <% challenges.forEach(c => { 
+      let link = "/games/typing/challenge/" + c.id + "/edit"; %>
+      <p><%= c.text %><button><a href=<%= link %>>EDIT</a> </button></p>
+   <% }) %>
+</body>
+<script src = "/games/typing/challenges.js"></script>
+<script src="/js/typing/script.js"></script>
+<script src="/js/typing/play-typing-game.js"></script>

@@ -1,0 +1,269 @@
+<html><head><title>exercises/3-js</title><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Fira+Mono"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.0/build/styles/default.min.css"><style>body,* {font-family: "Fira Sans";scroll-behavior: smooth;}body {margin: 1em;}#usi-logo {width: 75px;height: 75px;}header {display: flex;align-content: space-between;width: 100%;justify-items: center;}header ul {list-style: none;}header .title {flex: 1;margin-left: 1em;}html {min-height: 100vh;}pre,code {font-family: "Fira Mono"}pre {background: rgb(202, 227, 255);padding: 1em;}td {text-align: center}td:last-child {text-align: left;}th {font-weight: normal;color: rgb(0, 61, 131);}thead {border-bottom: 2px solid rgb(202, 227, 255);}table {width: 100%}span.task {display: inline-flex;border-radius: 50%;border: 1px solid white;background: #ffbc00;width: 4em;height: 4em;justify-content: center;align-items: center;font-weight: normal;margin-top: 2em;}.deadline {text-align: right;}p.deadline {font-size: 2em;}.deadline b {border-bottom: 1px solid black;}</style></head><body><header>    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="usi-logo" x="0px" y="0px" width="200" height="200" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve" class="injected-svg svg"><g><path d="M180,41.7h-51.1V31.1h42.2C153.1,12.5,127.8,1,99.9,1C45.2,1.1,0.9,45.4,1,100.1c0,26.8,10.7,51.1,28.1,68.9   c-1.4-2-2.4-4.1-3-6.1c-1-3.5-1-5.9-1.1-15.8v-47.1h14.8v48.5c0,3.4-0.1,6.6,1,9.6c3,7.6,11.3,8.5,16,8.5c2.3,0,8.3-0.1,12.6-3.9   c4.4-3.9,4.4-8.4,4.4-15v-47.7h14.9v49.7c-0.1,8.9-0.1,16.3-8.5,23.5c-8,7-18.4,7.7-23.8,7.7c-4.8,0-9.5-0.6-14-2.1   c-1.8-0.6-3.5-1.4-5-2.3c17.1,14,39,22.4,62.8,22.4c54.7-0.1,99-44.4,98.9-99.1C199,78.1,191.9,58,180,41.7z M175.3,94.4l-6.3-9   c2.1-1.4,8.7-5.7,8.7-17.7c0-2-0.2-4.1-1-6.2c-1.7-4.1-4.6-4.9-6.6-4.9c-3.6,0-4.9,2.5-5.7,4.3c-0.5,1.3-0.6,1.5-1.8,6.6l-1.5,6.9   c-0.9,3.6-1.3,5.4-2,7.2c-1.1,2.6-4.5,9.6-14,9.6c-10.9,0-17.8-9.2-17.8-22.6c0-12.3,6.1-19,11.6-23l6.6,8.8   c-2.8,1.9-8.5,5.7-8.5,14.8c0,5.8,2.6,10.8,7,10.8c4.9,0,5.8-5.3,6.8-10.5l1.3-5.9c1.6-7.7,4.8-18.6,17-18.6   c13.1,0,18.4,12.2,18.4,24.3c0,3.2-0.3,6.7-1.3,10.2C185.1,83.4,182.3,90.1,175.3,94.4z"></path></g></svg><div class="title"><h2>Web Atelier 2022</h2><h1>Exercise  3 - Object-Oriented JavaScript</h1></div><div class="deadline"><p>6.10.2022</p><p class="deadline">Deadline: <b>14.10.2022</b></p></div><ul><li>Prof. Cesare Pautasso</li><li>Fabio Di Lauro</li><li>Souhaila Serbout</li><li>Hassan Atwi</li></ul></header><h1 id="goal">Goal</h1>
+<p>The goal of these exercises is to improve your understanding of JavaScript as an object-oriented programming language for the Web browser.</p>
+<p>We assume you know how to program in some other object-oriented programming language and would like to learn how to program in JavaScript.</p>
+<h2 id="submitting-your-solution">Submitting your solution</h2>
+<p>Your solution <strong>should</strong> be commited <strong>and pushed</strong> to your github repository. Make sure your name is written in every file you submit. Anonymous solutions will not be graded.</p>
+<p>See the <code>README.md</code> file for more details on how to commit <strong>and push</strong> your solution.</p>
+<p>Use the special commit message <code>&quot;completed ex3, please check&quot;</code> <strong>only once</strong> when you have completed the assignment and would like to submit it to be corrected. </p>
+<p>After completing the exercise, make sure all the tests are green and push your solution to your GitHub repository.</p>
+<h3 id="automated-tests">Automated tests</h3>
+<p>Open the <code>test.html</code> page in a Web browser to run the tests automatically. The source of the test cases is found in <code>js/test.js</code>, you are welcome to read them but should not modify them.</p>
+<p>Note: the tests work only when serving the <code>test.html</code> page from a Web server (e.g., using some VS Code extension to <a href="https://marketplace.visualstudio.com/items?itemName=yuichinukiyama.vscode-preview-server&amp;ssr=false#qna">Preview on Web Server</a>) and not when opening the page as a file. If you read the error <code>Error: SecurityError: Permission denied to access property &quot;document&quot; on cross-origin object</code> it means the <code>test.html</code> was opened as a file.</p>
+<h2 id="mastery-check-topics">Mastery Check Topics</h2>
+<p>Solving this exercise will help you demonstrate mastery for the following topics:</p>
+<ul>
+<li><p>3. JavaScript  </p>
+<ul>
+<li>3.3. Objects Data Types  <ul>
+<li>3.3.1. Fields  </li>
+<li>3.2.2. Methods  </li>
+<li>3.3.3. Constructors</li>
+<li>3.3.4. this</li>
+<li>3.3.5. bind   </li>
+<li>3.3.6. JSON </li>
+<li>3.3.8. Inheritance (class)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>4. APIs</p>
+<ul>
+<li>4.1. Browser    <ul>
+<li>4.1.4. Events<ul>
+<li>4.1.4.1. Mouse  </li>
+<li>4.1.4.2. Keyboard Input  </li>
+<li>4.1.4.5. CustomEvent</li>
+</ul>
+</li>
+<li>4.1.5. Canvas  </li>
+<li>4.1.6. Local Storage  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>5. Networking  </p>
+<ul>
+<li>5.1. HTTP <ul>
+<li>5.1.2. URL</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="requirements">Requirements</h3>
+<p>Your Web application will grow with the following new features:</p>
+<ul>
+<li>A new game: the ObjectSnake using <code>&lt;canvas&gt;</code></li>
+<li>Player Name Editing using <code>URL</code> query string parameters</li>
+<li>High Score Tracking using <code>localStorage</code></li>
+</ul>
+<p>The ObjectSnake continuously moves around the canvas and grows as it eats randomly placed colorful food objects. It gets hurt when eating itself and when crossing the boundaries of the canvas to the opposite side. </p>
+<p><video src="https://i.imgur.com/Ok45jp3.mp4" controls></video></p>
+<h2 id="task---read-and-classify-code-patterns"><span class='task'>Task 1.</span>  Read and Classify Code Patterns</h2>
+<ul>
+<li>Answer the <a href="https://www.icorsi.ch/mod/quiz/view.php?id=850303">quiz on iCorsi</a>.</li>
+</ul>
+<p>This will help you understand the code for the game before you start to complete it.</p>
+<h2 id="task---complete-the-code"><span class='task'>Task 2.</span>  Complete the Code</h2>
+<p>In this task you will read and complete the code of the following classes that abstract the game behavior into three different kinds:</p>
+<ol>
+<li>the <code>Game</code></li>
+<li>the <code>CanvasGame</code></li>
+<li>the <code>SnakeGame</code></li>
+</ol>
+<p>which get more and more specific as shown in this UML class diagram:</p>
+<img src="https://i.imgur.com/OghVz24.png" width="500px"/>
+
+<ol>
+<li><strong>Game</strong> class</li>
+</ol>
+<p>A game is an object which maps a player name to a score. The game can be started and stopped. The player has a health, which decreases from 100% to 0%. When the health reaches 0% the game is over.</p>
+<p>The game also keeps track of the elapsed time since the game was started.</p>
+<p>The game knows how to display its state (player name, score, health, elapsed time) using the HTML elements of the page.</p>
+<ul>
+<li>Check that the selectors used to find the HTML elements match with the <code>play-snake-game.html</code> page content.</li>
+<li>Make sure that the given <code>play-snake-game.html</code> loads the required JavaScript code and initializes the game.</li>
+</ul>
+<ol start="2">
+<li><strong>CanvasGame</strong> class</li>
+</ol>
+<p>This game knows how to display itself on an HTML <code>&lt;canvas&gt;</code> element. To do so -- as long as the game is running - it uses the <code>requestAnimationFrame</code> JavaScript API to periodically repaint whatever the game is supposed to show.</p>
+<ul>
+<li>Since this is an abstract game, all it needs to do is to repaint a black filled rectangle to prepare the stage for the actual game elements.</li>
+</ul>
+<ol start="3">
+<li><strong>SnakeGame</strong> class</li>
+</ol>
+<p>The snake game keeps track of two objects: the <code>Snake</code> and the <code>Food</code>. </p>
+<ul>
+<li>The latter needs to be initialized.</li>
+</ul>
+<p>The snake game handles four different events:</p>
+<ol>
+<li>the snake movement timer</li>
+<li>the keyboard events to drive the snake</li>
+<li>the food creation timer</li>
+<li>the canvas repaint event (inherited from the <code>CanvasGame</code> super class)</li>
+</ol>
+<p>The event listeners are set up when the game starts and cleared when the game ends.</p>
+<ul>
+<li>Complete the game code to handle the food creation and the interaction between the snake and the food.</li>
+</ul>
+<ol start="4">
+<li><strong>Snake</strong> class</li>
+</ol>
+<p>The snake knows where it is (use an <code>Array</code> of coordinates) and which direction it is going. It can move and check whether it is crossing itself and whether it is crossing the canvas boundaries. If this happens it informs the game that the player health needs to be decreased. It can paint itself on the canvas.</p>
+<ul>
+<li>The snake also should know how to eat <code>Food</code> objects.</li>
+</ul>
+<ol start="5">
+<li><strong>Food</strong> class</li>
+</ol>
+<p>Food items are created at a random position (within the boundary of the canvas) and a random size. </p>
+<ul>
+<li><p>They should be painted as a rectangular shape. </p>
+</li>
+<li><p>They should know how to detect if a <code>Snake</code> head is close enough to eat them (Hint: use the <code>detectCollisionRect</code> function from the previous assignment).</p>
+</li>
+</ul>
+<h2 id="task---disappearing-food"><span class='task'>Task 3.</span>  Disappearing Food</h2>
+<p>Extend the game with the following feature:</p>
+<ul>
+<li>If a food object is not eaten after 5 seconds, it should disappear and reappear somewhere else with a different color/size.</li>
+</ul>
+<h2 id="task---colorful-food"><span class='task'>Task 4.</span>  Colorful Food</h2>
+<p>Extend the game with the following feature:</p>
+<ol>
+<li>Give a random color to each food item</li>
+<li>Change the color of the snake depending on the color of the most recently eaten food item</li>
+</ol>
+<h2 id="task---edit-and-display-player-name"><span class='task'>Task 5.</span>  Edit and Display Player Name</h2>
+<p>To initialize the game, read the player name from the page URL (for example <code>play-snake-game.html?player=X</code>). The current page URL is accessible using the <code>window.location</code> object.</p>
+<p>You can set the URL by creating a <code>&lt;form action=&quot;play-snake-game.html&quot; method=&quot;<span class='get'>GET</span>&quot;&gt;</code> in your homepage. Make sure that the <code>&lt;form&gt;</code> contains an <code>&lt;input&gt;</code> element with <code>id=&quot;player&quot;</code>.</p>
+<h2 id="task---high-scores"><span class='task'>Task 6.</span>  High Scores</h2>
+<p>When the game is over, it broadcasts a custom event with the player name, its score and the elapsed time.</p>
+<pre><code class="language-js">document.dispatchEvent(new <span class="hljs-type">CustomEvent</span>(<span class="hljs-string">&quot;Event&quot;</span>, { detail: <span class="hljs-meta">{...}</span> }));
+</code></pre>
+<p>Catch this event and store the information in the <code>localStorage</code> adding it to the existing <code>Array</code> of game results objects.</p>
+<p>When the <code>localStorage</code> changes or when the page is opened, read the content of the <code>localStorage</code> and render it in the <code>&lt;aside&gt;</code> element.</p>
+<p>Tip: You can handle this event to reload and refresh the high score content if the <code>localStorage</code> changes after the page has been loaded.</p>
+<pre><code class="language-js"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&#x27;storage&#x27;</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {});
+</code></pre>
+<ul>
+<li>Test that when opening your homepage and the game page in two separate windows the high scores are updated in both without having to refresh. This should work if you open them from a Web server (like the <code>test.html</code> page).</li>
+</ul>
+<h2 id="task---optional-requirements"><span class='task'>Task 7.</span>  Optional Requirements</h2>
+<p>For bonus points, implement at least <em>two</em> (&starf;&starf;&star;) or <em>five</em> (&starf;&starf;&starf;) (or twice as many when working in pairs) of the following:</p>
+<ol>
+<li>Prevent the snake from reversing its direction</li>
+<li>Increase the difficulty level: make the snake move faster as it grows</li>
+<li>Add poisonous food objects which decrease the snake health instead of increasing its length</li>
+<li>Add healthy food objects which recover the snake health and slightly decrease its length</li>
+<li>Show more than one food object at a time</li>
+<li>Drop food objects by clicking with the mouse on the canvas</li>
+<li>Turn the uneaten food objects into poisonous ones 1 second before they disappear</li>
+<li>When crossing the edge boundary make the snake appear at a random point along the opposite edge</li>
+<li>Add a second snake controlled by a different set of keys (ASDW for example)</li>
+<li>Add an increasingly higher number of snakes controlled by an AI (or simply making more or less random turns)</li>
+<li>Use the pause button to suspend and resume the game</li>
+</ol>
+<p><span style="font-style: italic; ">You should update the <code>README.md</code> file enumerating the optional features you implemented.</span></p>
+<h2 id="questions">Questions?</h2>
+<p>Please post them on our <a href="https://stackoverflow.com/c/usi-itinf/questions/ask?tags=ex3">private StackOverflow</a> using the <code>ex3</code> tag.</p>
+<!--
+
+
+Game <|-- CanvasGame
+
+CanvasGame <|-- SnakeGame
+
+SnakeGame *- Food
+Snake -* SnakeGame
+
+
+class Game {
+   #score
+   #health
+   running
+   player
+   time
+   ---
+   startGame()
+   stopGame()
+   getElapsedTime()
+   timer_tick()
+   ---
+   set score(s)
+   get score()
+   set health(h)
+   get health()
+   ---
+   displayScore(s)
+   displayHealth(s)
+   displayPlayer(s)
+   displayTime(s) 
+}
+
+class CanvasGame {
+    canvas
+    ctx
+   ---
+    clearCanvas()
+    paintCanvas()
+    startGame()
+}
+
+class SnakeGame  {
+    snake
+    food
+    snake_timer
+    food_timer
+   ---
+    paintCanvas()
+    startGame()
+    stopGame()
+   ---
+    getCanvasBound(canvas)
+   ---
+    tick() 
+    food_tick()
+    keydown(event)
+}
+
+class Food {
+   size
+   position
+   ---
+   get colorString()
+   get length()
+   ---
+   paint(ctx)
+   hit(snake)
+}
+
+class Snake {
+   length
+   position
+   velocity
+   bound
+   ---
+   goLeft()
+   goRight()
+   goDown()
+   goUp()
+   ---
+   move()
+   eat(food)
+   ---
+   paint(ctx)
+}
+
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam classFontSize 20
+skinparam classAttributeFontSize 15
+@enduml
+
+
+--><footer></footer></body></html>

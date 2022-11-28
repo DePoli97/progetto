@@ -1,0 +1,20 @@
+<!--
+
+   Web Atelier 2022  Exercise 5 - Web Apps and APIs with Express
+
+   Student: __STUDENT NAME__
+
+   High Scores View Fragment
+
+-->
+<aside>
+   <h2>TOP 5 PLAYERS</h2>
+    <% let obj = scoreBoard; 
+    for(let i = 0; i < scoreBoard.length; i++) { 
+      if (i > 5) {break;}; %>
+       <section style="border:5px; border-radius: 10px; margin: 5px;">
+           <h3><%= scoreBoard[i].player %></h3>
+           <h4><%= scoreBoard[i].score %></h4>
+       </section>
+    <% } %>
+</aside>

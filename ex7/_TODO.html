@@ -1,0 +1,112 @@
+<html><head><title>exercises/7-fetch</title><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Fira+Mono"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.0/build/styles/default.min.css"><style>body,* {font-family: "Fira Sans";scroll-behavior: smooth;}body {margin: 1em;}#usi-logo {width: 75px;height: 75px;}header {display: flex;align-content: space-between;width: 100%;justify-items: center;}header ul {list-style: none;}header .title {flex: 1;margin-left: 1em;}html {min-height: 100vh;}pre,code {font-family: "Fira Mono"}pre {background: rgb(202, 227, 255);padding: 1em;}td {text-align: center}td:last-child {text-align: left;}th {font-weight: normal;color: rgb(0, 61, 131);}thead {border-bottom: 2px solid rgb(202, 227, 255);}table {width: 100%}table tr:hover {background-color: rgb(151, 195, 236);}span.task {display: inline-flex;border-radius: 50%;border: 1px solid white;background: #ffbc00;width: 4em;height: 4em;justify-content: center;align-items: center;font-weight: normal;margin-top: 2em;}.deadline {text-align: right;}p.deadline {font-size: 2em;}.deadline b {border-bottom: 1px solid black;}span.get {font-weight: bold; color: #43a047;}span.post {font-weight: bold; color: #F3C142;}span.delete {font-weight: bold; color: #FF0000;}span.put {font-weight: bold; color: #4a90e2;}span.patch {font-weight: bold; color: #666666;}</style></head><body><header>    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="usi-logo" x="0px" y="0px" width="200" height="200" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve" class="injected-svg svg"><g><path d="M180,41.7h-51.1V31.1h42.2C153.1,12.5,127.8,1,99.9,1C45.2,1.1,0.9,45.4,1,100.1c0,26.8,10.7,51.1,28.1,68.9   c-1.4-2-2.4-4.1-3-6.1c-1-3.5-1-5.9-1.1-15.8v-47.1h14.8v48.5c0,3.4-0.1,6.6,1,9.6c3,7.6,11.3,8.5,16,8.5c2.3,0,8.3-0.1,12.6-3.9   c4.4-3.9,4.4-8.4,4.4-15v-47.7h14.9v49.7c-0.1,8.9-0.1,16.3-8.5,23.5c-8,7-18.4,7.7-23.8,7.7c-4.8,0-9.5-0.6-14-2.1   c-1.8-0.6-3.5-1.4-5-2.3c17.1,14,39,22.4,62.8,22.4c54.7-0.1,99-44.4,98.9-99.1C199,78.1,191.9,58,180,41.7z M175.3,94.4l-6.3-9   c2.1-1.4,8.7-5.7,8.7-17.7c0-2-0.2-4.1-1-6.2c-1.7-4.1-4.6-4.9-6.6-4.9c-3.6,0-4.9,2.5-5.7,4.3c-0.5,1.3-0.6,1.5-1.8,6.6l-1.5,6.9   c-0.9,3.6-1.3,5.4-2,7.2c-1.1,2.6-4.5,9.6-14,9.6c-10.9,0-17.8-9.2-17.8-22.6c0-12.3,6.1-19,11.6-23l6.6,8.8   c-2.8,1.9-8.5,5.7-8.5,14.8c0,5.8,2.6,10.8,7,10.8c4.9,0,5.8-5.3,6.8-10.5l1.3-5.9c1.6-7.7,4.8-18.6,17-18.6   c13.1,0,18.4,12.2,18.4,24.3c0,3.2-0.3,6.7-1.3,10.2C185.1,83.4,182.3,90.1,175.3,94.4z"></path></g></svg><div class="title"><h2>Web Atelier 2022</h2><h1>Exercise  7 - Single-Page Web Applications with Fetch and Client-side Views</h1></div><div class="deadline"><p>3.11.2022</p><p class="deadline">Deadline: <b>11.11.2022</b></p></div><ul><li>Prof. Cesare Pautasso</li><li>Fabio Di Lauro</li><li>Souhaila Serbout</li><li>Hassan Atwi</li></ul></header><h1 id="goal">Goal</h1>
+<p>In this exercise you will transform the game application into a single-page application, where the content is dynamically loaded and rendered directly in the browser.</p>
+<p>This will streamline the user experience for the following features:</p>
+<ul>
+<li>recording the high score when each game is over</li>
+<li>editing the typing challenges</li>
+<li>playing selected typing challenges</li>
+</ul>
+<p>To do so, we will build upon the JSON API from the previous assignment.  In general, everything you have built in the past exercises should be displayed on the same page. This time, you may and should run JavaScript code both in the browser and on the Web server.</p>
+<p>Developer Productivity Hint: <strong>do not start solving this assignment from scratch</strong>, but reuse as much as possible the code from your solution of assignments 5 and 6.</p>
+<h2 id="tests">Tests</h2>
+<p>As you develop your code, please run the automated tests to check your solution. Only submit solutions which pass all the tests.</p>
+<p>To run the tests, make sure your Web server <strong>and the database</strong> is running. Then open this route:</p>
+<pre><code class="language-bash">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8888</span>/test.html
+</code></pre>
+<p>You can check the results on the Web browser page and console.</p>
+<p><strong>Getting Started</strong>: To install the dependencies for the tests use:</p>
+<pre><code class="language-bash">yarn <span class="hljs-keyword">install</span>
+</code></pre>
+<p>Important: </p>
+<ul>
+<li>The Web server should be manually started before running the tests. </li>
+<li>The test assumes that your Web server listens on port 8888. </li>
+<li>If some of the test fail with a connection refused error, it may mean that the Web server has crashed while running the tests.</li>
+</ul>
+<h1 id="client-side-views">Client-side views</h1>
+<p>Compile the view templates (<code>views/*.ejs</code>) so that they can be executed in the browser by running the <code>ejsc</code> script:</p>
+<pre><code class="language-bash">yarn <span class="hljs-builtin-name">run</span> ejsc
+</code></pre>
+<p>The <a href="https://www.npmjs.com/package/ejsc-views">ejs view compiler</a> can also be automatically executed when the server starts.</p>
+<h2 id="mastery-check-topics">Mastery Check Topics</h2>
+<p>Solving this exercise will demonstrate mastery for the following topics:</p>
+<ul>
+<li>3. JavaScript  <ul>
+<li>3.6. Promises<ul>
+<li>3.6.1. then</li>
+<li>3.6.2. catch</li>
+<li>3.6.3. all</li>
+</ul>
+</li>
+<li>3.7. async, await</li>
+</ul>
+</li>
+<li>4. APIs  <ul>
+<li>4.1. Browser  <ul>
+<li>4.1.8. HTTP Client (Fetch)<ul>
+<li>4.1.8.1. HTTP methods</li>
+<li>4.1.8.2. JSON upload/download</li>
+<li>4.1.8.3. FormData</li>
+</ul>
+</li>
+<li>4.1.9. Navigation history</li>
+</ul>
+</li>
+<li>4.2. Server  <ul>
+<li>4.2.5. EJS  <ul>
+<li>4.2.5.4. Precompiled views</li>
+<li>4.2.5.5. Client-side rendering</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="task---read-and-classify-code-patterns"><span class='task'>Task 1.</span>  Read and Classify Code Patterns</h2>
+<ul>
+<li>Answer the <a href="https://www.icorsi.ch/mod/quiz/view.php?id=862229">quiz on iCorsi</a>.</li>
+</ul>
+<p>This will help you understand the code before you start to complete it.</p>
+<h2 id="task---get-"><span class='task'>Task 2.</span>  <span class='get'>GET</span> /</h2>
+<p>The single page application should load from the root of your server.</p>
+<p>Initially it should display the <code>home</code> view, displaying the homepage with the form to enter the player name, start a random game, the navigation links to the games and the high scores.</p>
+<h2 id="task---display-high-scores"><span class='task'>Task 3.</span>  Display High Scores</h2>
+<p>When the page loads, fetch the high score JSON from the server and render it inside the high score container element.</p>
+<h2 id="task---switch-games"><span class='task'>Task 4.</span>  Switch Games</h2>
+<p>Handle the navigation link click event to switch between different games. Make sure that the games can be played after navigating back and forth and that the player name entered in the homepage form is kept when playing each game.</p>
+<h2 id="task---game-over"><span class='task'>Task 5.</span>  Game Over</h2>
+<p>When each game is over, display the game over message with a button to save the game score and player name. When the button is clicked, call the <span class='post'>POST</span> /high_score route and after the score has been successfully stored, refresh the high score list displayed on the page.</p>
+<h2 id="task---challenge-editor-display-challenge-list"><span class='task'>Task 6.</span>  Challenge Editor (Display Challenge List)</h2>
+<p>When clicking on the editor link, display the list of challenges with a form to edit or create them. </p>
+<h2 id="task---challenge-editor-create-challenge"><span class='task'>Task 7.</span>  Challenge Editor (Create Challenge)</h2>
+<p>When clicking on the create button, send the <span class='post'>POST</span> request and refresh the challenge list.</p>
+<h2 id="task---challenge-editor-edit-challenge"><span class='task'>Task 8.</span>  Challenge Editor (Edit Challenge)</h2>
+<p>When selecting a challenge for editing, populate the form. When clicking on the save button of the form, send a <span class='put'>PUT</span> request to the server and refresh the challenge list.</p>
+<h2 id="task---challenge-editor-delete-challenge"><span class='task'>Task 9.</span>  Challenge Editor (Delete Challenge)</h2>
+<p>When clicking on the delete challenge button, send the <span class='delete'>DELETE</span> request to the server and refresh the challenge list to remove the delete item.</p>
+<h2 id="task---challenge-selection"><span class='task'>Task 10.</span>  Challenge selection</h2>
+<p>The random choice for selecting the typing challenge should be made on the server.</p>
+<p>To do so, replace the global variable <code>challenges</code> declared in a script whose array content is rendered server-side from the previous assignment, with a <code>fetch</code> request to the new route:</p>
+<pre><code><span class='get'>GET</span> <span class="hljs-regexp">/games/</span>typing<span class="hljs-regexp">/challenges/</span>random
+</code></pre>
+<p>which should return a randomly chosen challenge string and be called every time the game starts. </p>
+<h2 id="task---optional-requirements"><span class='task'>Task 11.</span>  Optional Requirements</h2>
+<p>Once you solved the assignments and the tests are green, make a copy and extend it to build the following optional requirements. Submit the original copy which passes the tests along with the extension.</p>
+<p>For bonus points (&starf;&starf;&star;), implement at least <em>two</em> (or <em>four</em> when working in pairs) of the following:</p>
+<ul>
+<li>Make the start a random game button work client-side only</li>
+<li>Make the top scores displayed include only the top 10 best players ever, but keep storing all the match results in the database. The filtering of the top 10 should be done server-side.</li>
+<li>Add a button to delete the challenge currently being edited in the form</li>
+<li>Add a button to clone the challenge currently being edited in the form</li>
+</ul>
+<p>For additional bonus points (&starf;&starf;&starf;), in addition to the two above chosen optional requirements, implement also <em>two</em> (or <em>four</em> when working in pairs) of the following: </p>
+<ul>
+<li>Integrate the <code>tic-tac-toe</code> game by rendering it on the client-side</li>
+<li>Share the state of the application using link #fragments.</li>
+<li>Update the browser navigation history to track application state changes.</li>
+<li>Autocomplete the form fields for player and author names based on the existing values present in the database.</li>
+</ul>
+<h2 id="questions">Questions?</h2>
+<p>Please post them on our <a href="https://stackoverflow.com/c/usi-itinf/questions/ask?tags=ex7">private StackOverflow</a> using the <code>ex7</code> tag.</p>
+<footer></footer></body></html>

@@ -1,0 +1,15 @@
+/**
+ * Web Atelier 2022  Exercise 5 - Web Apps and APIs with Express
+ *
+ * Student: __Deidda Paolo__
+ *
+ * Task 6
+ *
+ */
+
+ <% if (challenges.length < 1) { %>
+    let challenges = ['default'] 
+    <%} else { %>
+        let challenges = <%-JSON.stringify(challenges.map(c=>c.text))%>;
+    <% }
+%>

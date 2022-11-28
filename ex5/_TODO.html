@@ -1,0 +1,207 @@
+<html><head><title>exercises/5-express</title><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Fira+Mono"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.0/build/styles/default.min.css"><style>body,* {font-family: "Fira Sans";scroll-behavior: smooth;}body {margin: 1em;}#usi-logo {width: 75px;height: 75px;}header {display: flex;align-content: space-between;width: 100%;justify-items: center;}header ul {list-style: none;}header .title {flex: 1;margin-left: 1em;}html {min-height: 100vh;}pre,code {font-family: "Fira Mono"}pre {background: rgb(202, 227, 255);padding: 1em;}td {text-align: center}td:last-child {text-align: left;}th {font-weight: normal;color: rgb(0, 61, 131);}thead {border-bottom: 2px solid rgb(202, 227, 255);}table {width: 100%}table tr:hover {background-color: rgb(151, 195, 236);}span.task {display: inline-flex;border-radius: 50%;border: 1px solid white;background: #ffbc00;width: 4em;height: 4em;justify-content: center;align-items: center;font-weight: normal;margin-top: 2em;}.deadline {text-align: right;}p.deadline {font-size: 2em;}.deadline b {border-bottom: 1px solid black;}span.get {font-weight: bold; color: #43a047;}span.post {font-weight: bold; color: #F3C142;}span.delete {font-weight: bold; color: #FF0000;}span.put {font-weight: bold; color: #4a90e2;}span.patch {font-weight: bold; color: #666666;}</style></head><body><header>    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="usi-logo" x="0px" y="0px" width="200" height="200" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve" class="injected-svg svg"><g><path d="M180,41.7h-51.1V31.1h42.2C153.1,12.5,127.8,1,99.9,1C45.2,1.1,0.9,45.4,1,100.1c0,26.8,10.7,51.1,28.1,68.9   c-1.4-2-2.4-4.1-3-6.1c-1-3.5-1-5.9-1.1-15.8v-47.1h14.8v48.5c0,3.4-0.1,6.6,1,9.6c3,7.6,11.3,8.5,16,8.5c2.3,0,8.3-0.1,12.6-3.9   c4.4-3.9,4.4-8.4,4.4-15v-47.7h14.9v49.7c-0.1,8.9-0.1,16.3-8.5,23.5c-8,7-18.4,7.7-23.8,7.7c-4.8,0-9.5-0.6-14-2.1   c-1.8-0.6-3.5-1.4-5-2.3c17.1,14,39,22.4,62.8,22.4c54.7-0.1,99-44.4,98.9-99.1C199,78.1,191.9,58,180,41.7z M175.3,94.4l-6.3-9   c2.1-1.4,8.7-5.7,8.7-17.7c0-2-0.2-4.1-1-6.2c-1.7-4.1-4.6-4.9-6.6-4.9c-3.6,0-4.9,2.5-5.7,4.3c-0.5,1.3-0.6,1.5-1.8,6.6l-1.5,6.9   c-0.9,3.6-1.3,5.4-2,7.2c-1.1,2.6-4.5,9.6-14,9.6c-10.9,0-17.8-9.2-17.8-22.6c0-12.3,6.1-19,11.6-23l6.6,8.8   c-2.8,1.9-8.5,5.7-8.5,14.8c0,5.8,2.6,10.8,7,10.8c4.9,0,5.8-5.3,6.8-10.5l1.3-5.9c1.6-7.7,4.8-18.6,17-18.6   c13.1,0,18.4,12.2,18.4,24.3c0,3.2-0.3,6.7-1.3,10.2C185.1,83.4,182.3,90.1,175.3,94.4z"></path></g></svg><div class="title"><h2>Web Atelier 2022</h2><h1>Exercise  5 - Web Apps and APIs with Express</h1></div><div class="deadline"><p>20.10.2022</p><p class="deadline">Deadline: <b>28.10.2022</b></p></div><ul><li>Prof. Cesare Pautasso</li><li>Fabio Di Lauro</li><li>Souhaila Serbout</li><li>Hassan Atwi</li></ul></header><h1 id="goal">Goal</h1>
+<p>The goal of this exercise is to integrate your games into a gaming Web site built using express.js and EJS views. Your application will also expose an API to give access to its content via JSON representations. </p>
+<p>All changes to the state of the model should be saved in local server files called <code>challenges.json</code> and <code>high_scores.json</code>. These files should be loaded when the server starts to initialize the model. We will replace these files with collections stored in the MongoDB database in the next assignment.</p>
+<p>Here is an overview of the routes you will build:</p>
+<img src="https://i.imgur.com/u8xBipj.png" width="80%">
+
+<p>Developer Productivity Hint: reuse, adapt, and extend your solution from previous assignments as much as possible.</p>
+<h2 id="getting-started">Getting started</h2>
+<ol>
+<li>Install the missing dependencies<pre><code>yarn install
+yarn <span class="hljs-keyword">add</span> [<span class="hljs-keyword">module</span>]
+</code></pre>
+</li>
+<li>Add the missing controller routes and views</li>
+<li>Start the server with<pre><code>yarn <span class="hljs-literal">start</span>
+</code></pre>
+</li>
+</ol>
+<h1 id="tests">Tests</h1>
+<p>As you develop your code, please run the automated tests to check your solution. Only submit solutions which pass all the tests.</p>
+<p><strong>Getting Started</strong>: To install the dependencies for the tests use:</p>
+<pre><code class="language-bash">yarn <span class="hljs-keyword">install</span>
+</code></pre>
+<p><strong>Important</strong>: Make sure your Web server is already started before running the test. 
+The test assumes that your Web server listens on port 8888. </p>
+<p>If you see test failures due to <code>Error: ECONNREFUSED: Connection refused</code> it means that your Web server was not running at the time the test attempted to connect to it. </p>
+<p><strong>Running the tests</strong>: To run the tests use this command:</p>
+<pre><code class="language-bash">yarn <span class="hljs-keyword">run</span><span class="bash"> <span class="hljs-built_in">test</span></span>
+</code></pre>
+<p>You can check the results on the terminal.</p>
+<h2 id="mastery-check-topics">Mastery Check Topics</h2>
+<p>Solving this exercise will demonstrate mastery for the following topics:</p>
+<ul>
+<li>3. JavaScript  <ul>
+<li>3.4. Modules  </li>
+<li>3.5. Callbacks  </li>
+</ul>
+</li>
+<li>4. APIs  <ul>
+<li>4.2. Server  </li>
+<li>4.2.4. Express  <ul>
+<li>4.2.4.1. Routing  </li>
+<li>4.2.4.2. Middleware</li>
+<li>4.2.4.3. Request Body</li>
+<li>4.2.4.4. File Upload</li>
+<li>4.2.4.5. JSON response</li>
+<li>4.2.4.6. View Rendering</li>
+</ul>
+</li>
+<li>4.2.5. EJS  <ul>
+<li>4.2.5.1. Placeholders  </li>
+<li>4.2.5.2. Escaped Placeholders</li>
+<li>4.2.5.3. Includes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>5. Networking  <ul>
+<li>5.1. HTTP  <ul>
+<li>5.1.1. Request/Response  </li>
+<li>5.1.2. URL  </li>
+<li>5.1.3. Headers  <ul>
+<li>5.1.3.1. Accept/Content-Type  </li>
+</ul>
+</li>
+<li>5.1.4. Methods  <ul>
+<li>5.1.4.1. <span class='get'>GET</span>  </li>
+<li>5.1.4.2. <span class='post'>POST</span>  </li>
+<li>5.1.4.3. <span class='put'>PUT</span>  </li>
+<li>5.1.4.4. <span class='delete'>DELETE</span>  </li>
+<li>5.1.4.5. <span class='patch'>PATCH</span>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>6. Development Tools  <ul>
+<li>6.2. Server and Command Line Tools<ul>
+<li>6.2.2. Yarn  </li>
+<li>6.2.3. Dependency Management with package.json </li>
+</ul>
+</li>
+<li>6.4. HTTP Client Tools<ul>
+<li>6.4.1. <span class='post'>POST</span>Man</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="task---read-and-classify-code-patterns"><span class='task'>Task 1.</span>  Read and Classify Code Patterns</h2>
+<ul>
+<li>Answer the <a href="https://www.icorsi.ch/mod/quiz/view.php?id=854640">quiz on iCorsi</a>.</li>
+</ul>
+<p>This will help you understand the code for the game before you start to complete it.</p>
+<h2 id="task---serve-game-assets"><span class='task'>Task 2.</span>  Serve Game assets</h2>
+<p>For each game, publish the required assets (HTML, CSS, Browser-side JavaScript) developed during the previous assignments so that they can be loaded from the game server.</p>
+<pre><code><span class='get'>GET</span> /index.html
+<span class='get'>GET</span> <span class="hljs-regexp">/games/</span>typing/*
+<span class='get'>GET</span> <span class="hljs-regexp">/games/</span>snake/*
+</code></pre>
+<p>The corresponding assets should be loaded as sub-resources.</p>
+<p>After this task is complete, it should be possible to navigate from the homepage to the two games and play them.</p>
+<p>Starting from your initial sketches of the first exercise, create EJS views that compose the HTML of the various pages using reusable component views (e.g. for the header, navigation, footer and aside with the high scores).</p>
+<h2 id="task---start-random-game"><span class='task'>Task 3.</span>  Start random game</h2>
+<p>On the homepage, wire the form to start a random game with the given player name so that when submitted it will call the <code><span class='post'>POST</span> /games/random</code> route.</p>
+<p>On the server, implement the <code><span class='post'>POST</span> /games/random</code> route to:</p>
+<ol>
+<li>redirect the browser to a randomly chosen game</li>
+<li>pass the player name along in the URL.</li>
+</ol>
+<pre><code><span class='get'>GET</span> /index.html
+<span class='post'>POST</span> <span class="hljs-regexp">/games/</span>random
+<span class='get'>GET</span> <span class="hljs-regexp">/games/</span>typing?player=
+<span class='get'>GET</span> <span class="hljs-regexp">/games/</span>snake?player=
+</code></pre>
+<h2 id="task---game-over-collect-and-display-high-scores"><span class='task'>Task 4.</span>  Game Over: Collect and Display High Scores</h2>
+<p>When any game ends, change the browser <code>window.location</code> to display the game over message page, passing the current player name and score.</p>
+<p>This page is found at the following route:</p>
+<pre><code><span class='get'>GET</span> <span class="hljs-regexp">/high_scores/g</span>ame_over?player&amp;score
+</code></pre>
+<p>The game over page will display a form with a button to prompt the user to confirm that he would like to save his results in the high score list.</p>
+<p>Submitting the form will call the</p>
+<pre><code><span class='post'>POST</span> <span class="hljs-string">/high_scores</span>
+</code></pre>
+<p>so that the player and score can be stored and displayed in the high score list.</p>
+<p>The response will redirect the browser to display the homepage, which should include the newly addded score.</p>
+<p>To display the high scores, create a specific view fragment:</p>
+<pre><code><span class="hljs-built_in">views</span>/high_scores.ejs
+</code></pre>
+<p>which should be included in the homepage and in any other page where the high scores are displayed.</p>
+<h2 id="task---edit-typing-challenges"><span class='task'>Task 5.</span>  Edit Typing Challenges</h2>
+<p>The typing game could use more text challenges. Let&#39;s store them on the server so that players can share their favourite sentences to type.</p>
+<pre><code><span class='get'>GET</span> <span class="hljs-regexp">/games/</span>typing/challenges
+</code></pre>
+<p>List the available typing challenges. For every text challenge, add action buttons to Delete, or Edit the corresponding challenge. </p>
+<p>The page should also include a form to <em>Create</em> a new challenge.</p>
+<p>The form should include the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>text</code></td>
+<td>String</td>
+<td><code>&quot;&quot;</code></td>
+<td>Challenge string</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String</td>
+<td><code>&quot;&quot;</code></td>
+<td>Author of the challenge string</td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td>Integer</td>
+<td><code>5</code></td>
+<td>Difficulty level (0-10)</td>
+</tr>
+</tbody></table>
+<p>The form should be submitted to this route:</p>
+<pre><code><span class='post'>POST</span> <span class="hljs-regexp">/games/</span>typing/challenges
+</code></pre>
+<p>whose response should list the updated typing challenges (like the corresponding <span class='get'>GET</span> route).</p>
+<p>The action to Edit an existing challenge should retrieve the edit form from:</p>
+<pre><code><span class='get'>GET</span> <span class="hljs-regexp">/games/</span>typing<span class="hljs-regexp">/challenges/</span>:id/edit
+</code></pre>
+<p>The edit form including the same fields as the create form (above) should be submitted to this route to update the corresponding challenge:</p>
+<pre><code><span class='put'>PUT</span> <span class="hljs-regexp">/games/</span>typing<span class="hljs-regexp">/challenges/</span>:id
+</code></pre>
+<p>To delete challenges, use this route:</p>
+<pre><code><span class="hljs-keyword"><span class='delete'>DELETE</span></span> <span class="hljs-regexp">/games/</span>typing<span class="hljs-regexp">/challenges/</span>:id
+</code></pre>
+<h2 id="task---play-edited-typing-challenges"><span class='task'>Task 6.</span>  Play Edited Typing Challenges</h2>
+<p>The set of typing challenges text stored on the server should be made available to the game running on the browser.</p>
+<p>In the previous assignment, the challenges were hard-coded in an array of strings found within the <code>function pickRandomChallenge()</code>.</p>
+<p>To connect this function with the server-side data, we will replace the local variable <code>challenges</code> with a global variable having the same name that is found in a different <code>.js</code> script dynamically generated from the server.</p>
+<pre><code><span class='get'>GET</span> <span class="hljs-regexp">/games/</span>typing/challenges.js
+</code></pre>
+<p>Unlike the game assets stored in the <code>public/</code> folder, this JavaScript file will be dynamically created by the server to transfer the text challenges to the browser.</p>
+<p>Include it in the game HTML page as usual with the corresponding <code>&lt;script&gt;</code>.</p>
+<p>The content of the script should simply declare the <code>challenges</code> global variable and initialize it with the corresponding array of strings so that they can be read from the existing <code>pickRandomChallenge()</code> function.</p>
+<h2 id="task---optional-requirements"><span class='task'>Task 7.</span>  Optional Requirements</h2>
+<p>Once you solved the assignments and the tests are green, make a copy and extend it to build the following optional requirements. Submit the original copy which passes the tests along with the extension.</p>
+<p>For bonus points (&starf;&starf;&star;), implement at least <em>two</em> (or <em>four</em> when working in pairs) of the following:</p>
+<ol>
+<li>Together with the <code>player</code> and their <code>score</code>, also store the elapsed <code>time</code> duration of the match in the high score list.</li>
+<li>In the same way, keep track of which <code>game</code> was played to obtain the high score. On the homepage show the high scores of all games. On the game pages only show the high scores of the corresponding game.</li>
+<li>Store and display a creation timestamp and last edited timestamp for each challenge of the typing game. This way players could select to play against the latest challenges.</li>
+<li>Validate on the server-side the incoming typing challenges so that the text only contains characters commonly found on a keyboard (i.e., letters, numbers and spaces, but no special characters) - reject the <span class='post'>POST</span>/<span class='put'>PUT</span> requests with malformed text including illegal characters with a <code>400</code> status code.</li>
+</ol>
+<p>For additional bonus points (&starf;&starf;&starf;), in addition to the two above chosen optional requirements, implement also <em>two</em> (or <em>four</em> when working in pairs) of the following: </p>
+<ol>
+<li>Store, update and display a counter for how many time each challenge was played in the typing game</li>
+<li>In the challenge editor page, add a Play button to test the challenge being edited in the game</li>
+<li>Create a new page to import multiple challenge texts (each on a different line of a multi-line text input). Publish it under <code><span class='get'>GET</span> /games/typing/challenges/import</code> and submit the form with a <span class='post'>POST</span> request to the same URL.</li>
+<li>Migrate your <code>tic-tac-toe</code> game into the framework using EJS views</li>
+</ol>
+<h2 id="questions">Questions?</h2>
+<p>Please post them on our <a href="https://stackoverflow.com/c/usi-itinf/questions/ask?tags=ex5">private StackOverflow</a> using the <code>ex5</code> tag.</p>
+<footer></footer></body></html>

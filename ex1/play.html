@@ -1,0 +1,112 @@
+<!--
+    Web Atelier 2022
+    Exercise 1
+    HTML5 and CSS
+    Game Play Page
+    Author: Deidda Paolo
+-->
+<html>
+
+    <head>
+        <title>PLAY</title>
+        <meta name="author" content="Deidda Paolo">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3306/3306571.png"><!--tab logo-->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/play.css">
+    </head>
+
+    
+    
+    <body>
+        <header>
+            <h1>CALL of DUTY</h1>
+        </header>
+
+        <div class="container">
+            <nav id="col-left">
+                <h2>player</h2>
+                <input type="text" id="name" placeholder="Player name...">
+                <h2>GAME MENU</h2>
+                <a href="browse.html">browse</a>
+                <a href="edit.html">edit</a>
+                <a href="index.html">index</a>
+                <a href="play.html">play</a>
+            </nav>
+            <main>
+                <header>
+                    <p class="player">
+                        player
+                    </p>
+                    <p class="score">
+                        time left
+                    </p>
+                    <p class="health">
+                        health
+                    </p>
+                </header>
+    
+                <section class="game" id="sec_game">
+                    <canvas id="canv"></canvas>
+                </section>
+
+                <section class="actions">
+                    <button data-action="start">start</button>
+                    <button data-action="save">save</button>
+                    <button data-action="quit">quit</button>
+                </section>
+                <p>                
+                    <span>                    
+                    </span>
+                </p>
+                <footer>
+                    <p class="level"> 
+                        level
+                    </p>
+                    <p class="time">
+                        time
+                    </p>
+                </footer>
+            </main>
+            <aside id="fside">
+                <h2>TOP 5 PLAYERS</h2>
+                <section style="border:5px solid gold; border-radius: 10px; margin: 5px;">
+                    <h3>M.Hubbard</h3>
+                    <h4>99999</h4>
+                </section>
+                <section style="border:5px solid silver; border-radius: 10px; margin: 5px;">
+                    <h3>G.Igio</h3>
+                    <h4>8000</h4>
+                </section>
+                <section style="border:5px solid rgb(205, 127, 50); border-radius: 10px; margin: 5px;">
+                    <h3>M.Tolla</h3>
+                    <h4>900<h4>
+                </section>
+                <section style="border:2px solid grey; border-radius: 1px; margin: 5px;">
+                    <h3>S.Webber</h3>
+                    <h4>899</h4>
+                </section>
+                <section style="border:2px solid grey; border-radius: 1px; margin: 5px; margin-bottom: 10px;">
+                    <h3>N.Atos</h3>
+                    <h4>70</h4>
+                </section>
+            </aside> 
+        </div>
+
+        <div>
+            <a type="button" class="button" id="start_game_button" href="https://elgoog.im/space-invaders/">START <br>RANDOM GAME</a>
+        </div>
+        <div>
+            <a tupe="button" class="button" id="create_new_game_button" href="">CREATE <br> NEW GAME</a>
+        </div>
+        
+        <footer>
+            <h3><img src="https://logos-world.net/wp-content/uploads/2021/08/Copyright-Logo-700x394.png" alt="copyright_image" style="width:40px; border: transparent;"> all copyrights reserved</h3>
+        </footer>
+    </body>
+
+    
+      
+</html>
+  
+    
